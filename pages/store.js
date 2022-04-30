@@ -1,6 +1,6 @@
 import Header from "./Components/Header";
 
-export default function Store() {
+export default function Store({ showSideBar, setShowSideBar }) {
   return (
     <div>
       <Header />

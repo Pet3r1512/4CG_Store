@@ -4,8 +4,8 @@ import SubSearchBar from "./Components/SubSearchBar";
 import SideBar from "./Components/SideBar";
 import { useState } from "react";
 
-export default function Home() {
-  const [showSideBar, setShowSideBar] = useState(false);
+export default function Home({ showSideBar, setShowSideBar }) {
+  // const [showSideBar, setShowSideBar] = useState(false);
   return (
     <>
       <Tab />
