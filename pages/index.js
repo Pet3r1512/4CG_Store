@@ -1,23 +1,25 @@
+/* eslint-disable @next/next/no-img-element */
 import Head from "next/head";
 import Header from "../Components/Header";
 import SubSearchBar from "../Components/SubSearchBar";
 import SideBar from "../Components/SideBar";
 import { useState } from "react";
+import Hero from "../Components/Hero"
 
 export default function Home() {
   const [showSideBar, setShowSideBar] = useState(false);
   return (
-    <>
+    <div>
+      <img src="images/img1.jpg" alt="bg-img" className="z-0 absolute inset-x-0 top-0 w-full"/>
       <Tab />
-      <div className="transition duration-100 ease-linear">
+      <div className="transition duration-100 ease-linear" >
         <SideBar showSideBar={showSideBar} setShowSideBar={setShowSideBar} />
       </div>
-      <div className="font-Poppins w-screen">
+      <div className="font-Poppins w-screen" >
         <Header showSideBar={showSideBar} setShowSideBar={setShowSideBar} />
         <SubSearchBar />
-        home
       </div>
-    </>
+    </div>
   );
 }
 
