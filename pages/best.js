@@ -1,4 +1,4 @@
-import Header from "./Components/Header";
+import Header from "../Components/Header";
 
 export default function Best({ showSideBar, setShowSideBar }) {
   return (
