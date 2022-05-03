@@ -1,5 +1,6 @@
-import Header from "./Components/Header";
-import Branch from "./Components/Branch";
+/* eslint-disable react/jsx-key */
+import Header from "../Components/Header";
+import Branch from "../Components/Branch";
 
 const branchData = [
   {
