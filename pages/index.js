@@ -10,16 +10,15 @@ export default function Home({ showSideBar, setShowSideBar }) {
   // const [showSideBar, setShowSideBar] = useState(false);
   return (
     <div className="w-full overflow-x-hidden">
-      <img src="images/img1.jpg" alt="bg-img" className="fixed inset-x-0 top-0 w-full"/>
       <Tab />
-      <div className="transition duration-100 ease-linear" >
+      <div className="transition duration-100 ease-linear">
         <SideBar showSideBar={showSideBar} setShowSideBar={setShowSideBar} />
       </div>
-      <div className="font-Poppins w-screen" >
+      <div className="font-Poppins w-screen">
         <Header showSideBar={showSideBar} setShowSideBar={setShowSideBar} />
         <SubSearchBar />
       </div>
-        <Hero />
+      <Hero />
     </div>
   );
 }

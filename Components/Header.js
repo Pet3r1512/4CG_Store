@@ -8,8 +8,8 @@ export default function Header({ showSideBar, setShowSideBar }) {
       <div className="flex justify-between items-center gap-x-14">
         <div className="w-full sm:hidden">
           <HamburgerIcon
-            setShowSideBar={setShowSideBar}
             showSideBar={showSideBar}
+            setShowSideBar={setShowSideBar}
           />
         </div>
         <h1 className="text-3xl font-bold cursor-pointer hidden sm:block">
