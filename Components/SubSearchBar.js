@@ -1,6 +1,6 @@
 export default function SubSearchBar() {
   return (
-    <div className="mt-5 px-4 flex justify-end lg:hidden">
+    <div className="mt-5 px-4 flex justify-end lg:hidden opacity-50 hover:opacity-100">
       <div className="w-full relative">
         <input
           type="text"
