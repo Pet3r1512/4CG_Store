@@ -4,7 +4,11 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        // account_bg: "url('./public/images/account_bg.png')",
+      },
+    },
     fontFamily: {
       Poppins: ["Poppins", "sans-serif"],
       libre: ["Libre Baskerville", "serif"],

@@ -1,10 +1,11 @@
 import Menu from "./Menu";
 import Auth from "./Auth";
 import SearchBar from "./SearchBar";
+import Logo from "./Logo";
 
 export default function Header({ showSideBar, setShowSideBar }) {
   return (
-    <div className="max-w-7xl mx-auto mt-5 flex justify-between items-center relative px-3 sm:px-4 lg:px-0">
+    <div className="max-w-7xl mx-auto mt-5 flex justify-between items-center relative px-3 sm:px-4 lg:px-0 text-white">
       <div className="flex justify-between items-center gap-x-14">
         <div className="w-full sm:hidden">
           <HamburgerIcon
@@ -15,9 +16,7 @@ export default function Header({ showSideBar, setShowSideBar }) {
         <h1 className="text-3xl font-bold cursor-pointer hidden sm:block">
           4CG
         </h1>
-        <h1 className="text-3xl font-bold cursor-pointer absolute sm:hidden left-[50%] translate-x-[-50%]">
-          4CG
-        </h1>
+        <Logo />
         <Menu />
       </div>
       <div className="flex items-center gap-x-5">
