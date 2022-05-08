@@ -6,10 +6,13 @@ import SideBar from "../Components/SideBar";
 import Hero from "../Components/Hero";
 import { useState } from "react";
 
-export default function Home({ showSideBar, setShowSideBar }) {
-  // const [showSideBar, setShowSideBar] = useState(false);
+export default function Home() {
+  const [showSideBar, setShowSideBar] = useState(false);
   return (
-    <div className="w-full h-full bg-cover fixed" style={{backgroundImage: `url("images/img1.png")`}}>
+    <div
+      className="w-full h-full bg-cover fixed"
+      style={{ backgroundImage: `url("images/img1.png")` }}
+    >
       <Tab />
       <div className="transition duration-100 ease-linear">
         <SideBar showSideBar={showSideBar} setShowSideBar={setShowSideBar} />

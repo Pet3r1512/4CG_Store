@@ -16,7 +16,7 @@ function MenuLink(props) {
     <li>
       <Link href={props.href}>
         <a href={props.href}>
-          <p className="font-medium text-lg text-black hover:text-[#fca311] transition duration-75 ease-linear">
+          <p className="font-medium text-lg text-white hover:text-[#fca311] transition duration-75 ease-linear">
             {props.title}{" "}
           </p>
         </a>
