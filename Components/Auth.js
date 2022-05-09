@@ -50,6 +50,6 @@ const AuthIcon = [
         />
       </svg>
     ),
-    href: "/account",
+    href: "/sign_in",
   },
 ];
