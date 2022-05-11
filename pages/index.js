@@ -1,28 +1,34 @@
 /* eslint-disable @next/next/no-img-element */
+import react from "react";
 import Head from "next/head";
 import Header from "../Components/Header";
 import SubSearchBar from "../Components/SubSearchBar";
 import SideBar from "../Components/SideBar";
 import Hero from "../Components/Hero";
-import { useState } from "react";
+export const SideBarContext = react.createContext();
 
 export default function Home() {
-  const [showSideBar, setShowSideBar] = useState(false);
+  const [showSideBar, setShowSideBar] = react.useState(false);
+  const sideBar = {
+    show_side_bar: [showSideBar, setShowSideBar],
+  };
   return (
-    <div
-      className="w-full h-full bg-cover fixed"
-      style={{ backgroundImage: `url("images/img1.png")` }}
-    >
-      <Tab />
-      <div className="transition duration-100 ease-linear">
-        <SideBar showSideBar={showSideBar} setShowSideBar={setShowSideBar} />
+    <SideBarContext.Provider value={sideBar}>
+      <div
+        className="w-full h-full bg-cover fixed"
+        style={{ backgroundImage: `url("images/img1.png")` }}
+      >
+        <Tab />
+        <div className="transition duration-100 ease-linear">
+          <SideBar />
+        </div>
+        <div className="font-Poppins w-screen">
+          <Header />
+          <SubSearchBar />
+        </div>
+        <Hero />
       </div>
-      <div className="font-Poppins w-screen">
-        <Header showSideBar={showSideBar} setShowSideBar={setShowSideBar} />
-        <SubSearchBar />
-      </div>
-      <Hero />
-    </div>
+    </SideBarContext.Provider>
   );
 }
 

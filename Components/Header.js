@@ -1,16 +1,21 @@
+import react from "react";
+import { SideBarContext } from "../pages/index";
 import Menu from "./Menu";
 import Auth from "./Auth";
 import SearchBar from "./SearchBar";
 import Logo from "./Logo";
 
-export default function Header({ showSideBar, setShowSideBar }) {
+export default function Header() {
+  const context = react.useContext(SideBarContext);
+  const [showSideBar, setShowSideBar] = context.show_side_bar;
   return (
     <div className="max-w-7xl mx-auto mt-5 flex justify-between items-center relative px-3 sm:px-4 lg:px-0 text-black">
       <div className="flex justify-between items-center gap-x-14">
         <div className="w-full sm:hidden">
           <HamburgerIcon
-            showSideBar={showSideBar}
-            setShowSideBar={setShowSideBar}
+            onClick={() => {
+              setShowSideBar(!showSideBar);
+            }}
           />
         </div>
         <h1 className="text-3xl font-bold cursor-pointer hidden sm:block">
@@ -27,7 +32,7 @@ export default function Header({ showSideBar, setShowSideBar }) {
   );
 }
 
-function HamburgerIcon({ showSideBar, setShowSideBar }) {
+function HamburgerIcon({ onClick }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -36,7 +41,7 @@ function HamburgerIcon({ showSideBar, setShowSideBar }) {
       viewBox="0 0 24 24"
       stroke="currentColor"
       strokeWidth={2}
-      onClick={() => setShowSideBar(!showSideBar)}
+      onClick={onClick}
     >
       <path
         strokeLinecap="round"

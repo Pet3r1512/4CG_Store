@@ -1,4 +1,8 @@
+import react from "react";
+import { SideBarContext } from "../pages/index";
+
 export default function SubSearchBar() {
+  const show_side_bar = react.useContext(SideBarContext);
   return (
     <div className="mt-5 px-4 flex justify-end lg:hidden opacity-50 hover:opacity-100">
       <div className="w-full relative">
@@ -21,7 +25,7 @@ const searchIcon = (
     viewBox="0 0 24 24"
     stroke="currentColor"
     strokeWidth={2}
-    onClick={() => setShowSearhBar(!showSearchBar)}
+    onClick={() => setShowSearhBar(!showSideBar)}
   >
     <path
       strokeLinecap="round"
