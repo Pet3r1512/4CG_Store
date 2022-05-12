@@ -1,3 +1,5 @@
+import "./styles/global.css";
+
 module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
