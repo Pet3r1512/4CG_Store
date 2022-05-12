@@ -1,6 +1,4 @@
 /* eslint-disable react/jsx-key */
-import react from "react";
-import { SideBarContext } from "../pages/index";
 import Header from "../Components/Header";
 import Branch from "../Components/Branch";
 
@@ -38,8 +36,6 @@ export default function Store() {
       />
     );
   });
-  const context = react.useContext(SideBarContext);
-  const [showSideBar, setShowSideBar] = context.show_side_bar;
   return (
     <div>
       <Header />

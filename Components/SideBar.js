@@ -1,10 +1,6 @@
 import Link from "next/link";
-import react from "react";
-import { SideBarContext } from "../pages/index";
 
 export default function SideBar() {
-  const context = react.useContext(SideBarContext);
-  const [showSideBar, setShowSideBar] = context.show_side_bar;
   if (showSideBar) {
     const SideBarMenuList = MenuItem.map((item) => {
       return (
