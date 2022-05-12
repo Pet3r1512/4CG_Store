@@ -1,4 +1,6 @@
 /* eslint-disable react/jsx-key */
+import { useContext } from "react";
+import { AppContext } from "../hooks/state";
 import Header from "../Components/Header";
 import Branch from "../Components/Branch";
 
@@ -27,6 +29,8 @@ const branchData = [
 ];
 
 export default function Store() {
+  const context = useContext(AppContext);
+  const [showSideBar, setShowSideBar] = context.sideBarState;
   const branchMap = branchData.map((data) => {
     return (
       <Branch

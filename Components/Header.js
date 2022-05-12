@@ -1,13 +1,13 @@
-import react from "react";
-import { SideBarContext } from "../pages/index";
+import { useContext } from "react";
+import { AppContext } from "../hooks/state";
 import Menu from "./Menu";
 import Auth from "./Auth";
 import SearchBar from "./SearchBar";
 import Logo from "./Logo";
 
 export default function Header() {
-  const context = react.useContext(SideBarContext);
-  const [showSideBar, setShowSideBar] = context.show_side_bar;
+  const context = useContext(AppContext);
+  const [showSideBar, setShowSideBar] = context.sideBarState;
   return (
     <div className="max-w-7xl mx-auto mt-5 flex justify-between items-center relative px-3 sm:px-4 lg:px-0 text-black">
       <div className="flex justify-between items-center gap-x-14">

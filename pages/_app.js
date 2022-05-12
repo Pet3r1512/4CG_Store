@@ -1,4 +1,5 @@
-import AppWrapper from "../hooks/state";
+import "../styles/globals.css";
+import { AppWrapper } from "../hooks/state";
 
 function MyApp({ Component, pageProps }) {
   return (

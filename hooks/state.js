@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from "react";
 
-const AppContext = createContext();
+export const AppContext = createContext();
 
 export function AppWrapper({ children }) {
   const [showSideBar, setShowSideBar] = useState(false);

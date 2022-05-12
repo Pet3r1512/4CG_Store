@@ -1,6 +1,10 @@
+import { useContext } from "react";
+import { AppContext } from "../hooks/state";
 import Link from "next/link";
 
 export default function SideBar() {
+  const context = useContext(AppContext);
+  const [showSideBar, setShowSideBar] = context.sideBarState;
   if (showSideBar) {
     const SideBarMenuList = MenuItem.map((item) => {
       return (
@@ -10,10 +14,7 @@ export default function SideBar() {
     return (
       <div className="pt-5 px-3 h-screen w-[65%] bg-white absolute z-10 top-0 transition duration-100 ease-linear flex flex-col gap-y-12 rounded-r-3xl border-[2px] border-[#999] text-black">
         <div>
-          <CloseIcon
-            showSideBar={showSideBar}
-            setShowSideBar={setShowSideBar}
-          />
+          <CloseIcon onClick={() => setShowSideBar(!showSideBar)} />
         </div>
         <div className="mr-10">
           <ul className="flex flex-col gap-y-2">{SideBarMenuList}</ul>
@@ -42,7 +43,7 @@ function SideBarMenu(props) {
   );
 }
 
-function CloseIcon({ showSideBar, setShowSideBar }) {
+function CloseIcon({ onClick }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -51,7 +52,7 @@ function CloseIcon({ showSideBar, setShowSideBar }) {
       viewBox="0 0 24 24"
       stroke="currentColor"
       strokeWidth={2}
-      onClick={() => setShowSideBar(!showSideBar)}
+      onClick={onClick}
     >
       <path
         strokeLinecap="round"
