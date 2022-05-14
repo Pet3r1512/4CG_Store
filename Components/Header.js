@@ -18,7 +18,7 @@ export default function Header() {
             }}
           />
         </div>
-        <h1 className="text-3xl font-bold cursor-pointer hidden sm:block">
+        <h1 className="font-dancing text-3xl font-bold cursor-pointer hidden sm:block">
           4CG
         </h1>
         <Logo />
