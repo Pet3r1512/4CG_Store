@@ -1,15 +1,10 @@
-const purgecss = [
-  "@fullhuman/postcss-purgecss",
-  {
-    content: ["./components/**/*.js", "./pages/**/*.js"],
-    defaultExtractor: (content) => content.match(/[\w-/:]+(?<!:)/g) || [],
-  },
-];
+const defaultTheme = require("tailwindcss/defaultTheme")
+
 module.exports = {
-  // content: [
-  //   "./pages/**/*.{js,ts,jsx,tsx}",
-  //   "./components/**/*.{js,ts,jsx,tsx}",
-  // ],
+  content: [
+    "./src/pages/**/*.{js,ts,jsx,tsx}",
+    "./src/components/**/*.{js,ts,jsx,tsx}",
+  ],
   theme: {
     extend: {},
     fontFamily: {
@@ -22,8 +17,10 @@ module.exports = {
     },
     extend: {},
   },
-  purge: ["./components/**/*.{js,ts,jsx,tsx}", "./pages/**/*.{js,ts,jsx,tsx}"],
-  plugins: ["postcss-import", "tailwindcss", "autoprefixer"],
-};
-
+  variants: {
+    extend: {},
+  },
+  // eslint-disable-next-line global-require
+  plugins: [require("@tailwindcss/typography"), require("@tailwindcss/forms")],
+}
 
