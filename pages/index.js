@@ -19,7 +19,7 @@ export default function Home() {
       <div className="transition duration-100 ease-linear">
         <SideBar showSideBar={showSideBar} setShowSideBar={setShowSideBar} />
       </div>
-      <div className="font-Poppins w-screen">
+      <div className="w-screen">
         <Header />
         <SubSearchBar />
       </div>
