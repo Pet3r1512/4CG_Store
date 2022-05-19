@@ -1,4 +1,4 @@
-import "../styles/globals.css";
+import "../styles/tailwind.scss"
 import { AppWrapper } from "../hooks/state";
 
 function MyApp({ Component, pageProps }) {
