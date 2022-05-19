@@ -6,7 +6,8 @@ export default function Branch(props) {
       </h1>
       <div className="flex flex-col gap-y-1">
         <p className="text-center">{props.address}</p>
-        {props.address2 && <p className="text-center">{props.address2}</p>}
+        <p className="text-center">{props.address2}</p>
+        {/* {props.address2 && <p className="text-center">{props.address2}</p>} */}
       </div>
     </div>
   );

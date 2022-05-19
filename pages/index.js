@@ -17,7 +17,7 @@ export default function Home() {
     >
       <Tab />
       <div className="transition duration-100 ease-linear">
-        <SideBar showSideBar={showSideBar} setShowSideBar={setShowSideBar} />
+        <SideBar />
       </div>
       <div className="w-screen">
         <Header />
