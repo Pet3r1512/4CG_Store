@@ -12,7 +12,7 @@ export default function Home() {
   const [showSideBar, setShowSideBar] = context.sideBarState;
   return (
     <div
-      className="w-full h-full bg-cover fixed"
+      className="w-full h-screen bg-cover fixed"
       style={{ backgroundImage: `url("images/img1.png")` }}
     >
       <Tab />
