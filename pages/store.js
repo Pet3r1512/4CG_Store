@@ -49,7 +49,7 @@ export default function Store() {
     <div>
       <Header />
       <h1 className="text-4xl font-bold text-black text-center mt-24">Store</h1>
-      <div className="mt-24 flex justify-center items-centers flex-col gap-y-1">
+      <div className="min-h-screen mt-14 flex justify-center items-centers flex-col gap-y-1">
         {branchMap}
       </div>
     </div>

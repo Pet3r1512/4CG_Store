@@ -32,11 +32,11 @@ export default function About() {
             <h1 className="text-3xl sm:text-5xl font-libre font-bold md:text-6xl">
               About Us
             </h1>
-            <p className="leading-relaxed font-libre text-sm sm:text-sm md:text-lg lg:text-xl md:leading-loose flex flex-col">
+            <div className="leading-relaxed font-libre text-sm sm:text-sm md:text-lg lg:text-xl md:leading-loose flex flex-col max-w-7xl mx-auto">
               <p>{about_content1}</p>
               <br />
               <p>{about_content2}</p>
-            </p>
+            </div>
             <div className="border border-[#1C0A00] rounded-lg p-4 cursor-pointer">
               <q>FASHION HAS NO LIMIT</q>
             </div>
