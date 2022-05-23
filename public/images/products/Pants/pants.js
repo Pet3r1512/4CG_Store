@@ -1,4 +1,4 @@
-[
+export default pants = [
    {
       "key": "p1",
       "name": "Liven Essential Short",

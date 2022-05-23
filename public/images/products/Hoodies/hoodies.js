@@ -1,4 +1,4 @@
-[
+export default hoodies = [
   {
     "key": "h1",
     "name": "Multicolor Paneled",

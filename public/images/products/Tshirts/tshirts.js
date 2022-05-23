@@ -1,4 +1,4 @@
-[
+export default tshirts = [
    {
       "key": "ts1",
       "name": "Dice Tee",

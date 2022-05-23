@@ -1,4 +1,4 @@
-[
+export default minibags= [
    {
       "key": "mb1",
       "name": "Cross Body",

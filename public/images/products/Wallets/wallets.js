@@ -1,4 +1,4 @@
-[
+export default wallets = [
    {
       "key": "w1",
       "name": "Your Need",
