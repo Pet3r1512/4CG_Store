@@ -9,9 +9,9 @@ import Twitter from "@mui/icons-material/Twitter";
 function Social_Logos() {
   return (
     <div>
-      {/* {Facebook}
-      {/* {Instagram}
-      {Twitter} */}
+      {Facebook}
+      {Instagram}
+      {Twitter}
     </div>
   );
 }
