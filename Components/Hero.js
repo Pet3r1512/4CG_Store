@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -10,12 +11,9 @@ export default function Hero() {
             4CG Store
           </p>
         </div>
-        <a
-          href="./product"
-          className="font-playfair not-italic text-sm md:text-lg text-white border-2 border-solid rounded-lg p-2 hover:bg-white hover:text-black font-semibold transition duration-200 ease-linear"
-        >
-          SHOP NOW!
-        </a>
+        <div className="font-playfair not-italic text-sm md:text-lg text-white border-2 border-solid rounded-lg p-2 hover:bg-white hover:text-black font-semibold transition duration-200 ease-linear">
+          <Link href="./product">SHOP NOW!</Link>
+        </div>
       </h1>
     </div>
   );

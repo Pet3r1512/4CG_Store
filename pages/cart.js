@@ -1,10 +1,14 @@
 import Header from "../Components/Header";
+import SideBar from "../Components/SideBar";
 
 export default function Cart() {
   return (
-    <div>
-      <Header />
-      this is cart page
-    </div>
+    <>
+      <SideBar />
+      <div>
+        <Header />
+        this is cart page
+      </div>
+    </>
   );
 }

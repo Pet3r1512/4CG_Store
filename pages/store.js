@@ -2,6 +2,7 @@
 import { useContext } from "react";
 import { AppContext } from "../hooks/state";
 import Header from "../Components/Header";
+import SideBar from "../Components/SideBar";
 import Branch from "../Components/Branch";
 
 const branchData = [
@@ -46,12 +47,17 @@ export default function Store() {
     );
   });
   return (
-    <div>
-      <Header />
-      <h1 className="text-4xl font-bold text-black text-center mt-24">Store</h1>
-      <div className="min-h-screen mt-14 flex justify-center items-centers flex-col gap-y-1">
-        {branchMap}
+    <>
+      <SideBar />
+      <div>
+        <Header />
+        <h1 className="text-4xl font-bold text-black text-center mt-24">
+          Store
+        </h1>
+        <div className="min-h-screen mt-14 flex justify-center items-centers flex-col gap-y-1">
+          {branchMap}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
