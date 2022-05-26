@@ -12,12 +12,21 @@ import Card from "../Components/Card";
 export default function Product() {
   const context = useContext(AppContext);
   const [showSideBar, setShowSideBar] = context.sideBarState;
+  const path = "../public/images/products/";
+  const type1 = "Hoodies";
+  const hoodiesList = hoodies.map((item) => {
+    return (
+      <Card key={item.key} name={item.name} price={item.price} img={item.img} />
+    );
+  });
   return (
     <>
       <SideBar />
       <div>
         <Header />
-        This is Product page
+        <div className="max-w-7xl mx-auto mt-5">
+          <div>{hoodiesList}</div>
+        </div>
       </div>
     </>
   );
