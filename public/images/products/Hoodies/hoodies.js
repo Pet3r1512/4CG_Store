@@ -37,7 +37,7 @@ export default [
   },
   {
     key: "h6",
-    name: "Ye",
+    name: "Yenno Ultimate",
     price: 630000,
     img: "/images/products/Hoodies/h6.jpg",
     bestseller: true,

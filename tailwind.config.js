@@ -6,6 +6,7 @@ module.exports = {
   theme: {
     extend: {},
     fontFamily: {
+      poppins: ["Poppins", "sans-serif"],
       libre: "Libre\\ Baskerville, serif",
       playfair: "Playfair\\ Display, serif",
       dancing: "Dancing\\ Script, cursive",
