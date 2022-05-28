@@ -2,13 +2,12 @@ import ProductsList from "./ProductsList";
 import { useState } from "react";
 
 export default function SubSearchBar() {
-  const [input, setInput] = useState("")
-  
+  const [input, setInput] = useState("");
+
   const onChangeHandler = (context) => {
-    var lowerCase = context.target.value.toLowerCase()
-    setInput(lowerCase)
-  }
-  console.log(input)
+    var lowerCase = context.target.value.toLowerCase();
+    setInput(lowerCase);
+  };
   return (
     <div className="mt-5 px-4 flex justify-end lg:hidden opacity-50 hover:opacity-100">
       <div className="w-full relative">

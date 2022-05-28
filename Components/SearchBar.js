@@ -1,13 +1,13 @@
-import { useState } from "react"
-import ProductsList from "./ProductsList"
+import { useState } from "react";
+import ProductsList from "./ProductsList";
 
 export default function SearchBar() {
-  const [input, setInput] = useState("")
-  
+  const [input, setInput] = useState("");
+
   const onChangeHandler = (context) => {
-    var lowerCase = context.target.value.toLowerCase()
-    setInput(lowerCase)
-  }
+    var lowerCase = context.target.value.toLowerCase();
+    setInput(lowerCase);
+  };
 
   return (
     <div className="hidden lg:block">
