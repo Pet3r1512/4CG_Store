@@ -1,6 +1,6 @@
 export default function Card(props) {
   return (
-    <div className="mx-auto">
+    <div className="mx-auto card">
       <div className="min-h-[550px] flex items-center">
         <img
           src={props.img}
@@ -14,6 +14,11 @@ export default function Card(props) {
       <p className="font-semibold text-gray-600 text-sm sm:text-md md:text-lg italic cursor-pointer">
         {props.price}
       </p>
+      <div className="flex w-full justify-end">
+        <button className="bg-red-400 text-white font-semibold text-lg px-2 py-1 rounded-lg flex justify-center items-center border-[3px] border-red-400 hover:text-red-500 hover:bg-white transition duration-100 ease-linear">
+          Buy now!
+        </button>
+      </div>
     </div>
   );
 }

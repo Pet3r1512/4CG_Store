@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { AppContext } from "../hooks/state";
 import Header from "../Components/Header";
 import SideBar from "../Components/SideBar";
+import SubSearchBar from "../Components/SubSearchBar";
 import hoodies from "../public/images/products/Hoodies/hoodies";
 import minibags from "../public/images/products/Mini_Bags/minibags";
 import pants from "../public/images/products/Pants/pants";
@@ -43,6 +44,7 @@ export default function Product() {
       <SideBar />
       <div>
         <Header />
+        <SubSearchBar />
         <div className="max-w-7xl mx-auto my-14 px-3 sm:px-4 lg:px-0 flex flex-col gap-y-14">
           <div>
             <h1 className="text-3xl font-extrabold">Hoodies</h1>
