@@ -9,7 +9,7 @@ export default function Header() {
   const context = useContext(AppContext);
   const [showSideBar, setShowSideBar] = context.sideBarState;
   return (
-    <div className="max-w-7xl mx-auto mt-5 flex justify-between items-center relative px-3 sm:px-4 lg:px-0 text-black">
+    <div className="max-w-7xl mx-auto pt-5 flex justify-between items-center relative px-3 sm:px-4 lg:px-0 text-black">
       <div className="flex justify-between items-center gap-x-14">
         <div className="w-full sm:hidden">
           <HamburgerIcon

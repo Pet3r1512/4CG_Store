@@ -2,6 +2,7 @@ import { AppContext } from "../hooks/state";
 import { useContext } from "react";
 import Header from "../Components/Header";
 import SideBar from "../Components/SideBar";
+import SubSearchBar from "../Components/SubSearchBar";
 import { Facebook, Instagram, Twitter } from "@mui/icons-material";
 
 function Social_Logos() {
@@ -27,6 +28,7 @@ export default function About() {
       <SideBar />
       <div className="">
         <Header />
+        <SubSearchBar />
         <div className="px-6 py-10 h-screen text-[#383838] md:py-0">
           <div className="flex flex-col h-full md:w-full items-center justify-start gap-y-10 md:justify-center md:gap-y-14">
             <h1 className="text-3xl sm:text-5xl font-libre font-bold md:text-6xl">

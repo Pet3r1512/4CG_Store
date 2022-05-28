@@ -4,6 +4,7 @@ import { AppContext } from "../hooks/state";
 import Header from "../Components/Header";
 import SideBar from "../Components/SideBar";
 import Branch from "../Components/Branch";
+import SubSearchBar from "../Components/SubSearchBar";
 
 const branchData = [
   {
@@ -50,7 +51,10 @@ export default function Store() {
     <>
       <SideBar />
       <div>
-        <Header />
+        <div className="bg-gray-600 pb-5">
+          <Header />
+          <SubSearchBar />
+        </div>
         <div className="flex flex-col mt-14 gap-10">
           <h1 className="text-4xl font-bold text-black text-center">
             Store

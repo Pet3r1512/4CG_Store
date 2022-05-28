@@ -12,7 +12,7 @@ export default function SideBar() {
       );
     });
     return (
-      <div className="pt-5 px-3 h-screen w-[65%] bg-white absolute z-10 top-0 transition duration-100 ease-linear flex flex-col gap-y-12 rounded-r-3xl border-[2px] border-[#999] text-black">
+      <div className="pt-5 px-3 h-screen w-2/4 bg-white absolute z-10 top-0 transition duration-100 ease-linear flex flex-col gap-y-12 rounded-r-3xl border-[2px] border-[#999] text-black">
         <div>
           <CloseIcon onClick={() => setShowSideBar(!showSideBar)} />
         </div>

@@ -12,14 +12,14 @@ export default function Home() {
   const [showSideBar, setShowSideBar] = context.sideBarState;
   return (
     <div
-      className="w-screen h-screen bg-cover fixed"
+      className="w-full h-screen bg-cover fixed"
       style={{ backgroundImage: `url("images/img1.png")` }}
     >
       <Tab />
       <div className="transition duration-100 ease-linear">
         <SideBar />
       </div>
-      <div className="w-screen">
+      <div>
         <Header />
         <SubSearchBar />
       </div>

@@ -7,6 +7,7 @@ import tshirts from "./tshirts.json"
 import wallets from "./wallets.json"
 import SideBar from "../../Components/SideBar";
 import Header from "../../Components/Header";
+import SubSearchBar from "../../Components/SubSearchBar";
 
 export async function getServerSideProps (context){
    const product = getProducts(context.query.product)
@@ -35,11 +36,14 @@ export default function Product({ product }){
    console.log(product)
    return (
       <div>
+         <SideBar />
          <div>
             <Header />
-            <SideBar />
+            <SubSearchBar />
+            <div className="mt-20">
+               <h1 className="text-5xl">{product.name}</h1>
+            </div>
          </div>
-         <h1 className="text-5xl">{product.name}</h1>
       </div>
    )
 }
