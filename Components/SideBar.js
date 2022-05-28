@@ -69,7 +69,7 @@ const MenuItem = [
     title: "Home",
   },
   {
-    href: "/product",
+    href: "/products",
     title: "Product",
   },
   {
