@@ -3,46 +3,44 @@ import { AppContext } from "../hooks/state";
 import Header from "../Components/Header";
 import SideBar from "../Components/SideBar";
 import SubSearchBar from "../Components/SubSearchBar";
-import hoodies from "../public/images/products/Hoodies/hoodies";
-import minibags from "../public/images/products/Mini_Bags/minibags";
-import pants from "../public/images/products/Pants/pants";
-import tshirts from "../public/images/products/Tshirts/tshirts";
-import wallets from "../public/images/products/Wallets/wallets";
+import hoodies from "./products/hoodies.json"
+import minibags from "./products/minibags.json"
+import pants from "./products/pants.json"
+import tshirts from "./products/tshirts.json"
+import wallets from "./products/wallets.json"
 import Card from "../Components/Card";
-import ProductsSession from "../Components/ProductsSession";
-import Link from "next/link";
 
-export default function Product() {
+export default function Products() {
   const context = useContext(AppContext);
   const [showSideBar, setShowSideBar] = context.sideBarState;
-  const hoodiesList = hoodies.map((item) => {
+  const hoodiesList = hoodies.map((product) => {
     return (
-      <Card key={item.key} name={item.name} price={item.price} img={item.img} />
+      <Card key={product.key} name={product.name} price={product.price} img={product.img} slug={product.slug} />
     );
   });
-  const minibagsList = minibags.map((item) => {
+  const minibagsList = minibags.map((product) => {
     return (
-      <Card key={item.key} name={item.name} price={item.price} img={item.img} />
+      <Card key={product.key} name={product.name} price={product.price} img={product.img} slug={product.slug} />
     );
   });
-  const pantsList = pants.map((item) => {
+  const pantsList = pants.map((product) => {
     return (
-      <Card key={item.key} name={item.name} price={item.price} img={item.img} />
+      <Card key={product.key} name={product.name} price={product.price} img={product.img} slug={product.slug} />
     );
   });
-  const tshirtsList = tshirts.map((item) => {
+  const tshirtsList = tshirts.map((product) => {
     return (
-      <Card key={item.key} name={item.name} price={item.price} img={item.img} />
+      <Card key={product.key} name={product.name} price={product.price} img={product.img} slug={product.slug} />
     );
   });
-  const walletsList = wallets.map((item) => {
+  const walletsList = wallets.map((product) => {
     return (
-      <div key={item.key}>
-        <Card name={item.name} price={item.price} img={item.img} />
-        <button><Link href={item.slug}>Buy</Link></button>
+      <div key={product.key}>
+        <Card name={product.name} price={product.price} img={product.img} slug={product.slug} />
       </div>
     );
   });
+
   return (
     <>
       <SideBar />

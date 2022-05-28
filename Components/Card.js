@@ -1,8 +1,10 @@
+/* eslint-disable @next/next/link-passhref */
+/* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 
 export default function Card(props) {
   return (
-    <div className="mx-auto card">
+    <div className="mx-auto mt-4 card px-6 pb-4 flex flex-col gap-4 items-center">
       <div className="min-h-[550px] flex items-center">
         <img
           src={props.img}
@@ -10,16 +12,16 @@ export default function Card(props) {
           className="max-w-[300px] min-w-[200px] sm:max-w-[350px] sm:min-w-[300px] "
         />
       </div>
-      <h1 className="font-poppins font-bold text-lg sm:text-xl md:text-2xl cursor-pointer">
-        {props.name}
-      </h1>
-      <p className="font-semibold text-gray-600 text-sm sm:text-md md:text-lg italic cursor-pointer">
-        {props.price}
-      </p>
-      <div className="flex w-full justify-end">
-        <button className="bg-red-400 text-white font-semibold text-lg px-2 py-1 rounded-lg flex justify-center items-center border-[3px] border-red-400 hover:text-red-500 hover:bg-white transition duration-100 ease-linear">
-          Buy now!
-        </button>
+      <div className="flex flex-col ">
+        <h1 className="font-libre text-3xl">{props.name}</h1>
+        <p className="font-poppins">{props.price} VND</p>
+      </div>
+      <div className="">
+        <Link href={`/products/${props.slug}`}>
+          <button className="bg-red-400 text-white font-semibold text-xl px-6 py-1 rounded-lg flex justify-center items-center border-[3px] border-red-400 hover:text-red-500 hover:bg-white transition duration-100 ease-linear font-dancing">
+            Buy now !
+          </button>
+        </Link>
       </div>
     </div>
   );

@@ -51,11 +51,13 @@ export default function Store() {
       <SideBar />
       <div>
         <Header />
-        <h1 className="text-4xl font-bold text-black text-center mt-24">
-          Store
-        </h1>
-        <div className="min-h-screen mt-14 flex justify-center items-centers flex-col gap-y-1">
-          {branchMap}
+        <div className="flex flex-col mt-14 gap-10">
+          <h1 className="text-4xl font-bold text-black text-center">
+            Store
+          </h1>
+          <div className="min-h-screen items-centers">
+            {branchMap}
+          </div>
         </div>
       </div>
     </>

@@ -1,0 +1,43 @@
+
+[
+  {
+    "key": "w1",
+    "name": "Your Need",
+    "price": 220000,
+    "img": "/images/products/Wallets/w1.jpg",
+    "bestseller": false,
+    "slug": "YourNeed-w1"
+  },
+  {
+    "key": "w2",
+    "name": "Velvet",
+    "price": 220000,
+    "img": "/images/products/Wallets/w2.jpg",
+    "bestseller": false,
+    "slug": "Velvet-w2"
+  },
+  {
+    "key": "w3",
+    "name": "Anthem Long Zip",
+    "price": 550000,
+    "img": "/images/products/Wallets/w3.jpg",
+    "bestseller": true,
+    "slug": "AnthemLongZip-w3"
+  },
+  {
+    "key": "w4",
+    "name": "Anthem Short Flap",
+    "price": 450000,
+    "img": "/images/products/Wallets/w4.jpg",
+    "bestseller": true,
+    "slug": "AnthemShortFlap-w4"
+  },
+  {
+    "key": "w5",
+    "name": "Anthem Long Flap",
+    "price": 490000,
+    "img": "/images/products/Wallets/w5.jpg",
+    "bestseller": false,
+    "slug": "AnthemLongFlap-w5"
+  }
+]

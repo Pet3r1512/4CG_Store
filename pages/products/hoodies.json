@@ -1,0 +1,50 @@
+[
+  {
+    "key": "h1",
+    "name": "Multicolor Paneled",
+    "price": 530000,
+    "img": "/images/products/Hoodies/h1.jpg",
+    "bestseller": false,
+    "slug": "Multicolor_Paneled-h1"
+  },
+  {
+    "key": "h2",
+    "name": "Patchowork Mint",
+    "price": 750000,
+    "img": "/images/products/Hoodies/h2.jpg",
+    "bestseller": false,
+    "slug": "Patchowork_Mint-h2"
+  },
+  {
+    "key": "h3",
+    "name": "Mywana Black",
+    "price": 620000,
+    "img": "/images/products/Hoodies/h3.jpg",
+    "bestseller": true,
+    "slug": "Mywana_Black-h3"
+  },
+  {
+    "key": "h4",
+    "name": "Dark Grey",
+    "price": 600000,
+    "img": "/images/products/Hoodies/h4.jpg",
+    "bestseller": false,
+    "slug": "Dark_Grey-h4"
+  },
+  {
+    "key": "h5",
+    "name": "Bunny Jelly",
+    "price": 660000,
+    "img": "/images/products/Hoodies/h5.jpg",
+    "bestseller": false,
+    "slug": "Bunny_Jelly-h5"
+  },
+  {
+    "key": "h6",
+    "name": "Yenno Ultimate",
+    "price": 630000,
+    "img": "/images/products/Hoodies/h6.jpg",
+    "bestseller": true,
+    "slug": "Yenno_Ultimate-h6"
+  }
+]

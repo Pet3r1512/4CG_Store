@@ -1,0 +1,42 @@
+[
+  {
+    "key": "p1",
+    "name": "Liven Essential Short",
+    "price": 390000,
+    "img": "/images/products/Pants/p1.jpg",
+    "bestseller": true,
+    "slug": "Liven_Essential_Short-p1"
+  },
+  {
+    "key": "p2",
+    "name": "Acid Kaki",
+    "price": 650000,
+    "img": "/images/products/Pants/p2.jpg",
+    "bestseller": false,
+    "slug": "Acid_Kaki-p2"
+  },
+  {
+    "key": "p3",
+    "name": "Smile Short",
+    "price": 350000,
+    "img": "/images/products/Pants/p3.jpg",
+    "bestseller": true,
+    "slug": "Smile_Short-p3"
+  },
+  {
+    "key": "p4",
+    "name": "Forest",
+    "price": 780000,
+    "img": "/images/products/Pants/p4.jpg",
+    "bestseller": false,
+    "slug": "Forest-p4"
+  },
+  {
+    "key": "p5",
+    "name": "Chill Sweat",
+    "price": 420000,
+    "img": "/images/products/Pants/p5.jpg",
+    "bestseller": true,
+    "slug": "Chill_Sweat-p5"
+  }
+]
