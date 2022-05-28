@@ -9,6 +9,7 @@ import tshirts from "../public/images/products/Tshirts/tshirts";
 import wallets from "../public/images/products/Wallets/wallets";
 import Card from "../Components/Card";
 import ProductsSession from "../Components/ProductsSession";
+import Link from "next/link";
 
 export default function Product() {
   const context = useContext(AppContext);
@@ -35,7 +36,10 @@ export default function Product() {
   });
   const walletsList = wallets.map((item) => {
     return (
-      <Card key={item.key} name={item.name} price={item.price} img={item.img} />
+      <div key={item.key}>
+        <Card name={item.name} price={item.price} img={item.img} />
+        <button><Link href={item.slug}>Buy</Link></button>
+      </div>
     );
   });
   return (

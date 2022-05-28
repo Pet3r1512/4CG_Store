@@ -6,6 +6,7 @@ export default [
     price: 220000,
     img: "/images/products/Wallets/w1.jpg",
     bestseller: false,
+    slug: "YourNeed-w1"
   },
   {
     key: "w2",
@@ -13,6 +14,7 @@ export default [
     price: 220000,
     img: "/images/products/Wallets/w2.jpg",
     bestseller: false,
+    slug: "Velvet-w2"
   },
   {
     key: "w3",
@@ -20,6 +22,7 @@ export default [
     price: 550000,
     img: "/images/products/Wallets/w3.jpg",
     bestseller: true,
+    slug: "AnthemLongZip-w3"
   },
   {
     key: "w4",
@@ -27,6 +30,7 @@ export default [
     price: 450000,
     img: "/images/products/Wallets/w4.jpg",
     bestseller: true,
+    slug: "AnthemShortFlap-w4"
   },
   {
     key: "w5",
@@ -34,5 +38,6 @@ export default [
     price: 490000,
     img: "/images/products/Wallets/w5.jpg",
     bestseller: false,
+    slug: "AnthemLongFlap-w5"
   },
 ];

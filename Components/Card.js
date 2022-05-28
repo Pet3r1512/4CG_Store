@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Card(props) {
   return (
     <div className="mx-auto">
