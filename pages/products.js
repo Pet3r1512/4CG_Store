@@ -9,6 +9,7 @@ import pants from "./products/pants.json"
 import tshirts from "./products/tshirts.json"
 import wallets from "./products/wallets.json"
 import Card from "../Components/Card";
+import Footer from "../Components/Footer";
 
 
 
@@ -98,6 +99,7 @@ export default function Products() {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 }
