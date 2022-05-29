@@ -3,62 +3,90 @@ import { AppContext } from "../hooks/state";
 import Header from "../Components/Header";
 import SideBar from "../Components/SideBar";
 import SubSearchBar from "../Components/SubSearchBar";
-import hoodies from "./products/hoodies.json"
-import minibags from "./products/minibags.json"
-import pants from "./products/pants.json"
-import tshirts from "./products/tshirts.json"
-import wallets from "./products/wallets.json"
+import hoodies from "./products/hoodies.json";
+import minibags from "./products/minibags.json";
+import pants from "./products/pants.json";
+import tshirts from "./products/tshirts.json";
+import wallets from "./products/wallets.json";
 import Card from "../Components/Card";
 import Footer from "../Components/Footer";
-
-
 
 export default function Products() {
   const context = useContext(AppContext);
   const [showSideBar, setShowSideBar] = context.sideBarState;
   const hoodiesList = hoodies.map((product) => {
     return (
-      <Card key={product.key} name={product.name} price={product.price} img={product.img} slug={product.slug} />
+      <Card
+        key={product.key}
+        name={product.name}
+        price={product.price}
+        img={product.img}
+        slug={product.slug}
+      />
     );
   });
   const minibagsList = minibags.map((product) => {
     return (
-      <Card key={product.key} name={product.name} price={product.price} img={product.img} slug={product.slug} />
+      <Card
+        key={product.key}
+        name={product.name}
+        price={product.price}
+        img={product.img}
+        slug={product.slug}
+      />
     );
   });
   const pantsList = pants.map((product) => {
     return (
-      <Card key={product.key} name={product.name} price={product.price} img={product.img} slug={product.slug} />
+      <Card
+        key={product.key}
+        name={product.name}
+        price={product.price}
+        img={product.img}
+        slug={product.slug}
+      />
     );
   });
   const tshirtsList = tshirts.map((product) => {
     return (
-      <Card key={product.key} name={product.name} price={product.price} img={product.img} slug={product.slug} />
+      <Card
+        key={product.key}
+        name={product.name}
+        price={product.price}
+        img={product.img}
+        slug={product.slug}
+      />
     );
   });
   const walletsList = wallets.map((product) => {
     return (
       <div key={product.key}>
-        <Card name={product.name} price={product.price} img={product.img} slug={product.slug} />
+        <Card
+          name={product.name}
+          price={product.price}
+          img={product.img}
+          slug={product.slug}
+        />
       </div>
     );
   });
 
   React.useEffect(() => {
-    window.onscroll = function(){stickyNav()}
+    window.onscroll = function () {
+      stickyNav();
+    };
 
-    var navbar = document.getElementById("navbar")
-    var sticky = navbar.offsetTop
+    var navbar = document.getElementById("navbar");
+    var sticky = navbar.offsetTop;
 
-    function stickyNav(){
-      if(window.pageYOffset > sticky){
-        navbar.classList.add("fixed")
-      }
-      else {
-        navbar.classList.remove("fixed")
+    function stickyNav() {
+      if (window.pageYOffset > sticky) {
+        navbar.classList.add("fixed");
+      } else {
+        navbar.classList.remove("fixed");
       }
     }
-  })
+  });
 
   return (
     <>

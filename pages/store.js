@@ -56,10 +56,8 @@ export default function Store() {
           <SubSearchBar />
         </div>
         <div className="flex flex-col mt-14 gap-10">
-          <h1 className="text-4xl font-bold text-black text-center">
-            Store
-          </h1>
-          <div className="min-h-screen items-centers">
+          <h1 className="text-4xl font-bold text-black text-center">Store</h1>
+          <div className="min-h-screen flex flex-col items-center justify-center">
             {branchMap}
           </div>
         </div>

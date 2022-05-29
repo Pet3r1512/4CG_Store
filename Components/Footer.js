@@ -1,28 +1,37 @@
-import { Facebook, Instagram, Twitter, Copyright } from '@mui/icons-material'
+import Link from "next/link";
+import { Facebook, Instagram, Twitter, Copyright } from "@mui/icons-material";
 
 export default function Footer() {
   return (
-    <footer className='bg-gray-800 text-white h-[450px]'>
-      <div className='flex flex-col gap-y-10 items-center p-4 mb-6'>
-        <div className='text-center'>
-          <h1 className='font-dancing text-4xl'>4CG</h1>
-          <p className='font-playfair'>---</p>
-          <p className='font-playfair'>Slogan</p>
-        </div>
-        <div className='text-center'>
-          <p>Made By</p>
-          <p>Pham Tang Thanh Phong <br /> Nguyen Ho Linh Dan <br /> Nguyen Thi Thuan Phoi <br /> Le Dinh Khoi</p>
-        </div>
-      </div>
-      <div className='flex flex-col border-t-2 w-full pt-8 justify-center items-center gap-y-6 '>
-        <div className='flex gap-4'>
-          <Facebook></Facebook>
-          <Instagram></Instagram>
-          <Twitter></Twitter>
-        </div>
-        <div className='flex gap-x-2'>
-          <Copyright></Copyright>
-          <p>Copyrigth. All right reserved</p>
+    <footer className="bg-gray-800 text-white">
+      <div className="flex items-center py-4 max-w-7xl mx-auto">
+        <div className="w-full grid grid-cols-1 col-auto">
+          <div className="sm:flex sm:gap-x-3 hidden">
+            <Link href="./about">
+              <a href="">About 4CG</a>
+            </Link>
+            <Link href="">
+              <a href="">Return Policy</a>
+            </Link>
+          </div>
+          <div className="flex gap-x-1 justify-center">
+            <Copyright></Copyright>
+            <p>2022 4CG, LLC. All Rights Reserved.</p>
+          </div>
+          <div className="sm:flex sm:gap-x-3 sm:justify-end hidden">
+            <Link href="">
+              <a href="">Contact us</a>
+            </Link>
+            <Link href="">
+              <Facebook></Facebook>
+            </Link>
+            <Link href="">
+              <Instagram></Instagram>
+            </Link>
+            <Link href="">
+              <Twitter></Twitter>
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
