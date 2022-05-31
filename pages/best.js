@@ -3,6 +3,7 @@ import { AppContext } from "../hooks/state";
 import Header from "../Components/Header";
 import SideBar from "../Components/SideBar";
 import SubSearchBar from "../Components/SubSearchBar";
+import Footer from "../Components/Footer";
 
 export default function Best() {
   const context = useContext(AppContext);
@@ -17,6 +18,7 @@ export default function Best() {
           This is best seller page
         </div>
       </div>
+      <Footer />
     </>
   );
 }

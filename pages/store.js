@@ -5,6 +5,7 @@ import Header from "../Components/Header";
 import SideBar from "../Components/SideBar";
 import Branch from "../Components/Branch";
 import SubSearchBar from "../Components/SubSearchBar";
+import Footer from "../Components/Footer"
 
 const branchData = [
   {
@@ -62,6 +63,7 @@ export default function Store() {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 }

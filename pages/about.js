@@ -4,6 +4,7 @@ import Header from "../Components/Header";
 import SideBar from "../Components/SideBar";
 import SubSearchBar from "../Components/SubSearchBar";
 import { Facebook, Instagram, Twitter } from "@mui/icons-material";
+import Footer from "../Components/Footer"
 
 function Social_Logos() {
   return (
@@ -48,6 +49,7 @@ export default function About() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
