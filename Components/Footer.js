@@ -10,7 +10,7 @@ export default function Footer() {
             <Link href="./about">
               <a href="">About 4CG</a>
             </Link>
-            <Link href="/policy">
+            <Link href="./policy">
               <a href="">Return Policy</a>
             </Link>
           </div>

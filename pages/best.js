@@ -11,9 +11,11 @@ export default function Best() {
   return (
     <>
       <SideBar />
-      <div>
-        <Header showSideBar={showSideBar} setShowSideBar={setShowSideBar} />
+      <div className="w-full z-10 top-0 bg-gray-600 pb-5" id="navbar">
+        <Header />
         <SubSearchBar />
+      </div>
+      <div>
         <div className="min-h-screen flex justify-center items-centersss">
           This is best seller page
         </div>
