@@ -8,3 +8,29 @@ datasource db {
   url                  = env("DATABASE_URL")
   referentialIntegrity = "prisma"
 }
+
+model Product {
+  id             String           @id @default(cuid())
+  type           String
+  name           String
+  price          BigInt
+  img            String
+  slug           String
+  bestseller     Boolean
+  ReceiptDetails ReceiptDetails[]
+}
+
+model Receipt {
+  id                  String           @id @default(cuid())
+  customerName        String
+  customerPhoneNumber String
+  ReceiptDetails      ReceiptDetails[]
+}
+
+model ReceiptDetails {
+  id        String  @id @default(cuid())
+  receipt   Receipt @relation(fields: [receiptId], references: [id])
+  product   Product @relation(fields: [productId], references: [id])
+  receiptId String
+  productId String
+}
