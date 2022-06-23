@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/link-passhref */
 import Link from "next/link";
 import { useContext } from "react";
-import { AppContext } from "../hooks/state";
+import { AppContext } from "../../hooks/state";
 import hoodies from "./hoodies.json";
 import minibags from "./minibags.json";
 import pants from "./pants.json";
@@ -22,10 +22,6 @@ export async function getServerSideProps(context) {
   };
 }
 
-function addToCart({ img, name, price }) {
-  CartList.push({ img, name, price });
-}
-
 const products = hoodies.concat(wallets, minibags, pants, tshirts);
 
 const getProducts = (param) => {
@@ -42,6 +38,11 @@ const getProducts = (param) => {
 export default function Product({ product }) {
   const context = useContext(AppContext);
   const CartList = context.cartArray;
+
+  const addToCart = ({ img, name, price }) => {
+    CartList.push({ img, name, price });
+  };
+
   return (
     <div>
       <SideBar />
@@ -62,7 +63,7 @@ export default function Product({ product }) {
               <p className="font-semibold text-lg">{product.price}</p>
             </div>
             <Button
-              onClick={addToCart(product.img, product.name, product.price)}
+              onClick={() => addToCart({ img: product.img, name: product.name, price: product.price })}
             />
           </div>
         </div>
