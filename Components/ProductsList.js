@@ -1,11 +1,11 @@
 /* eslint-disable @next/next/link-passhref */
-import hoodies from "../pages/products/hoodies.json"
-import minibags from "../pages/products/minibags.json"
-import pants from "../pages/products/pants.json"
-import tshirts from "../pages/products/tshirts.json"
-import wallets from "../pages/products/wallets.json"
+import hoodies from "../pages/products/hoodies.json";
+import minibags from "../pages/products/minibags.json";
+import pants from "../pages/products/pants.json";
+import tshirts from "../pages/products/tshirts.json";
+import wallets from "../pages/products/wallets.json";
 import Image from "next/image";
-import Link from "next/link"
+import Link from "next/link";
 
 export default function ProductsList({ input }) {
   const products = hoodies.concat(wallets, minibags, pants, tshirts);
@@ -22,7 +22,7 @@ export default function ProductsList({ input }) {
     >
       {productsFilter.map((product) => (
         <Link key={product.key} href={`/products/${product.slug}`}>
-          <li className="flex gap-6 p-2 pl-4 border border-b-2 hover:bg-gray-200 bg-cover w-full h-full rounded-lg hover:cursor-pointer">
+          <li className="flex gap-4 p-2 pl-4 border border-b-2 hover:bg-gray-200 bg-cover w-full h-full rounded-lg hover:cursor-pointer">
             <Image
               alt="product image"
               src={product.img}
