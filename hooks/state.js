@@ -2,10 +2,20 @@ import { createContext, useContext, useState } from "react";
 
 export const AppContext = createContext();
 
-export function AppWrapper({ children }) {
+function useSidebarState() {
   const [showSideBar, setShowSideBar] = useState(false);
+  return [showSideBar, setShowSideBar];
+}
+
+function useCartArray() {
+  const cartArray = [];
+  return cartArray;
+}
+
+export function AppWrapper({ children }) {
   const sharedState = {
-    sideBarState: [showSideBar, setShowSideBar],
+    sideBarState: useSidebarState(),
+    cartArray: useCartArray,
   };
   return (
     <AppContext.Provider value={sharedState}>{children}</AppContext.Provider>
