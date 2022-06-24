@@ -7,31 +7,13 @@ import Footer from "../Components/Footer";
 import { prisma } from "../backend/getPrismaClient";
 
 export async function getServerSideProps() {
-  const hoodies = await prisma.product.findMany({
-    where: {
-      type: 'hoodie',
-    },
-  });
-  const minibags = await prisma.product.findMany({
-    where: {
-      type: 'minibag',
-    },
-  });
-  const pants = await prisma.product.findMany({
-    where: {
-      type: 'pants',
-    },
-  });
-  const tshirts = await prisma.product.findMany({
-    where: {
-      type: 'tshirt',
-    },
-  });
-  const wallets = await prisma.product.findMany({
-    where: {
-      type: 'wallet',
-    },
-  });
+  const products = await prisma.product.findMany();
+
+  const hoodies = products.filter((product) => product.type === 'hoodie');
+  const minibags = products.filter((product) => product.type === 'minibag');
+  const pants = products.filter((product) => product.type === 'pants');
+  const tshirts = products.filter((product) => product.type === 'tshirt');
+  const wallets = products.filter((product) => product.type === 'wallet');
 
   return {
     props: {
