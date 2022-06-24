@@ -1,4 +1,3 @@
-import { useAppContext } from "react";
 import Header from "../Components/Header";
 import SideBar from "../Components/SideBar";
 import SubSearchBar from "../Components/SubSearchBar";
