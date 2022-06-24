@@ -24,10 +24,10 @@ const AuthIcon = [
 ];
 
 export default function Auth() {
-  const AuthList = AuthIcon.map((item) => {
+  const AuthList = AuthIcon.map((icon) => {
     return (
-      <Link href={item.href} key={item.key}>
-        {item.icon}
+      <Link href={icon.href} key={icon.key}>
+        {icon.icon}
       </Link>
     );
   });
