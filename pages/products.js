@@ -40,7 +40,7 @@ export default function Products({
         <Card
           key={product.key}
           name={product.name}
-          price={(product.price = convertPrice(product.price))}
+          price={convertPrice(product.price)}
           img={product.img}
           slug={product.slug}
         />

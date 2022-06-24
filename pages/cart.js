@@ -59,7 +59,7 @@ export default function Cart() {
         {/* Total */}
         <div className="flex justify-between items-center py-auto mx-8 sm:mx-20 md:mx-36 px-4 rounded-lg text-2xl sm:text-3xl font-semibold border-2 border-gray-500">
           <p>Total</p>
-          <p>{(product.price = convertPrice(product.price))}</p>
+          <p>{convertPrice(product.price)}</p>
         </div>
         {/* Checkout button */}
         <div className="flex w-full justify-center mt-12">
