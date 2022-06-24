@@ -4,11 +4,9 @@ import SideBar from "../Components/SideBar";
 import SubSearchBar from "../Components/SubSearchBar";
 import Card from "../Components/Card";
 import Footer from "../Components/Footer";
-import { getPrismaClient } from "../backend/getPrismaClient";
+import { prisma } from "../backend/getPrismaClient";
 
 export async function getServerSideProps() {
-  const prisma = getPrismaClient();
-
   const hoodies = await prisma.product.findMany({
     where: {
       type: 'hoodie',

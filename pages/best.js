@@ -3,10 +3,9 @@ import SideBar from "../Components/SideBar";
 import SubSearchBar from "../Components/SubSearchBar";
 import Footer from "../Components/Footer";
 import Card from "../Components/Card";
-import { getPrismaClient } from "../backend/getPrismaClient";
+import { prisma } from "../backend/getPrismaClient";
 
 export async function getServerSideProps() {
-  const prisma = getPrismaClient();
   const bestsellers = await prisma.product.findMany({
     where: {
       bestseller: true

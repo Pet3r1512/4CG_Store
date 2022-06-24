@@ -3,14 +3,13 @@ import SideBar from "../../Components/SideBar";
 import Header from "../../Components/Header";
 import SubSearchBar from "../../Components/SubSearchBar";
 import Button from "../../Components/Button";
-import { getPrismaClient } from '../../backend/getPrismaClient';
+import { prisma } from '../../backend/getPrismaClient';
 
 export async function getServerSideProps(context) {
   const slug = context.query.product;
   const slugSplit = slug.split("-");
   const key = slugSplit[slugSplit.length - 1];
 
-  const prisma = getPrismaClient();
   const product = await prisma.product.findUnique({
     where: { key },
   })
