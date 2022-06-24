@@ -1,6 +1,6 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useCallback } from "react";
 
-export const AppContext = createContext();
+export const AppContext = createContext({});
 
 function useSidebarState() {
   const [showSideBar, setShowSideBar] = useState(false);
@@ -8,15 +8,38 @@ function useSidebarState() {
 }
 
 function useCartArray() {
-  const cartArray = [];
-  return cartArray;
+  const [cartArray, setCartArray] = useState([]);
+
+  const addToCart = useCallback(
+    (product) => {
+      const itemLookup = cartArray.find((item) => item.key === product.key);
+
+      if (!itemLookup) {
+        // Add 1 new item to cart if it's not in the cart
+        setCartArray([...cartArray, { ...product, quantity: 1 }]);
+        return;
+      }
+
+      // Add item to existing entry in cart
+      const newCart = cartArray.map((item) => {
+        if (item.key !== product.key) return item;
+
+        item.quantity += 1;
+        return item;
+      });
+      setCartArray(newCart);
+    },
+    [cartArray, setCartArray]);
+
+  return [cartArray, addToCart];
 }
 
 export function AppWrapper({ children }) {
   const sharedState = {
     sideBarState: useSidebarState(),
-    cartArray: useCartArray,
+    cartArray: useCartArray(),
   };
+
   return (
     <AppContext.Provider value={sharedState}>{children}</AppContext.Provider>
   );

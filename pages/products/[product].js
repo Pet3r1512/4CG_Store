@@ -1,5 +1,3 @@
-/* eslint-disable @next/next/link-passhref */
-import Link from "next/link";
 import { useContext } from "react";
 import { AppContext } from "../../hooks/state";
 import hoodies from "./hoodies.json";
@@ -12,6 +10,17 @@ import Header from "../../Components/Header";
 import SubSearchBar from "../../Components/SubSearchBar";
 import Button from "../../Components/Button";
 
+function getProducts(param) {
+  const products = hoodies.concat(wallets, minibags, pants, tshirts);
+  const splitProduct = param.split("-");
+  const key = splitProduct[splitProduct.length - 1];
+
+  const product = products.find((product) => product.key === key);
+
+  if (!product) return null;
+  return product;
+}
+
 export async function getServerSideProps(context) {
   const product = getProducts(context.query.product);
 
@@ -22,26 +31,11 @@ export async function getServerSideProps(context) {
   };
 }
 
-const products = hoodies.concat(wallets, minibags, pants, tshirts);
-
-const getProducts = (param) => {
-  const splitProduct = param.split("-");
-  const key = splitProduct[splitProduct.length - 1];
-
-  const product = products.find((product) => product.key == key);
-
-  if (product) {
-    return product;
-  } else return null;
-};
-
 export default function Product({ product }) {
   const context = useContext(AppContext);
-  const CartList = context.cartArray;
+  const [_cart, addToCart] = context.cartArray;
 
-  const addToCart = ({ img, name, price }) => {
-    CartList.push({ img, name, price });
-  };
+  const addToCartHandler = () => addToCart(product);
 
   return (
     <div>
@@ -53,7 +47,7 @@ export default function Product({ product }) {
       <div className="max-w-7xl mx-auto">
         <div className="my-20 w-full flex flex-col sm:flex-row sm:justify-end">
           <div className="max-w-[350px] sm:max-w-[450px] md:max-w-[500px] mx-auto">
-            <img src={product.img} alt="" />
+            <img src={product.img} alt=""/>
           </div>
           <div className="mx-[30px] sm:mx-auto w-full flex flex-col gap-y-5">
             <div className="flex flex-col gap-y-1">
@@ -62,9 +56,7 @@ export default function Product({ product }) {
               </h1>
               <p className="font-semibold text-lg">{product.price}</p>
             </div>
-            <Button
-              onClick={() => addToCart({ img: product.img, name: product.name, price: product.price })}
-            />
+            <Button onClick={addToCartHandler} />
           </div>
         </div>
       </div>
