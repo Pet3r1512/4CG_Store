@@ -7,7 +7,6 @@ export default function Branch({ branch, address, address2 }) {
       <div className="flex flex-col gap-y-1">
         <p className="text-center">{address}</p>
         <p className="text-center">{address2}</p>
-        {/* {address2 && <p className="text-center">{address2}</p>} */}
       </div>
     </div>
   );

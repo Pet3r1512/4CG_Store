@@ -9,9 +9,9 @@ import Link from "next/link";
 export default function ProductsList({ input }) {
   const products = hoodies.concat(wallets, minibags, pants, tshirts);
   const productsFilter = products.filter((product) => {
-    if (input) {
-      return product.name.toLowerCase().includes(input);
-    }
+    if (!input) return;
+
+    return product.name.toLowerCase().includes(input);
   });
 
   return (

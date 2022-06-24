@@ -5,7 +5,7 @@ export default function SearchBar() {
   const [input, setInput] = useState("");
 
   const onChangeHandler = (context) => {
-    var lowerCase = context.target.value.toLowerCase();
+    const lowerCase = context.target.value.toLowerCase();
     setInput(lowerCase);
   };
 

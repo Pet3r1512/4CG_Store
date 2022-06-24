@@ -1,21 +1,22 @@
-import { useContext } from "react";
-import { AppContext } from "../hooks/state";
+import { useAppContext } from "../hooks/state";
 import Header from "../Components/Header";
 import SideBar from "../Components/SideBar";
 import SubSearchBar from "../Components/SubSearchBar";
 
 export default function Cart() {
-  const context = useContext(AppContext);
+  const context = useAppContext();
   const CartList = context.cartArray;
+
   const CartListItems = CartList.map((item) => {
     return (
-      <div>
+      <div key={item.key}>
         <img src={item.img} alt="" />
         <h1>{item.name}</h1>
         <p>{item.price}</p>
       </div>
     );
   });
+
   return (
     <>
       <SideBar />

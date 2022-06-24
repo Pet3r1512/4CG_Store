@@ -1,5 +1,3 @@
-import { useContext } from "react";
-import { AppContext } from "../hooks/state";
 import Header from "../Components/Header";
 import SideBar from "../Components/SideBar";
 import Branch from "../Components/Branch";
@@ -35,8 +33,6 @@ const branchData = [
 ];
 
 export default function Store() {
-  const context = useContext(AppContext);
-  const [showSideBar, setShowSideBar] = context.sideBarState;
   const branchMap = branchData.map((item) => {
     return (
       <Branch
@@ -47,6 +43,7 @@ export default function Store() {
       />
     );
   });
+
   return (
     <>
       <SideBar />

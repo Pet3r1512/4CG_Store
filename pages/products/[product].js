@@ -1,5 +1,4 @@
-import { useContext } from "react";
-import { AppContext } from "../../hooks/state";
+import { useAppContext } from "../../hooks/state";
 import hoodies from "./hoodies.json";
 import minibags from "./minibags.json";
 import pants from "./pants.json";
@@ -32,7 +31,7 @@ export async function getServerSideProps(context) {
 }
 
 export default function Product({ product }) {
-  const context = useContext(AppContext);
+  const context = useAppContext();
   const [_cart, addToCart] = context.cartArray;
 
   const addToCartHandler = () => addToCart(product);

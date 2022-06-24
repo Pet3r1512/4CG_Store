@@ -1,7 +1,6 @@
 import Link from "next/link";
-import Button from "./Button";
 
-export default function Card({img, name, price, slug}) {
+export default function Card({ img, name, price, slug }) {
   return (
     <div className="mx-auto mt-4 card px-6 pb-4 flex flex-col gap-2 items-center">
       <div className="min-h-[550px] flex items-center">

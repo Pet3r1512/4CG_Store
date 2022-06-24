@@ -1,4 +1,5 @@
 import Link from "next/link";
+import MenuItem from './MenuItem';
 
 export default function Menu() {
   const MenuList = MenuItem.map((item) => {
@@ -24,26 +25,3 @@ function MenuLink({ href, title }) {
     </li>
   );
 }
-
-const MenuItem = [
-  {
-    href: "/",
-    title: "Home",
-  },
-  {
-    href: "/products",
-    title: "Product",
-  },
-  {
-    href: "/best",
-    title: "Best",
-  },
-  {
-    href: "/store",
-    title: "Store",
-  },
-  {
-    href: "/about",
-    title: "About",
-  },
-];

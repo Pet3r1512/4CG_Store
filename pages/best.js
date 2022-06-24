@@ -1,15 +1,15 @@
-import { useContext } from "react";
-import { AppContext } from "../hooks/state";
+import { useAppContext } from "../hooks/state";
 import Header from "../Components/Header";
 import SideBar from "../Components/SideBar";
 import SubSearchBar from "../Components/SubSearchBar";
 import Footer from "../Components/Footer";
-import BestSeller from "./products/best.json";
 import Card from "../Components/Card";
+import BestSeller from "./products/best.json";
 
 export default function Best() {
-  const context = useContext(AppContext);
+  const context = useAppContext();
   const [showSideBar, setShowSideBar] = context.sideBarState;
+
   const bestList = BestSeller.map((item) => {
     return (
       <Card
@@ -21,6 +21,7 @@ export default function Best() {
       />
     );
   });
+
   return (
     <>
       <SideBar />

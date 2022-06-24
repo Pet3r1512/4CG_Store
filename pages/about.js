@@ -1,26 +1,24 @@
-import { AppContext } from "../hooks/state";
-import { useContext } from "react";
+import { useAppContext } from "react";
 import Header from "../Components/Header";
 import SideBar from "../Components/SideBar";
 import SubSearchBar from "../Components/SubSearchBar";
 import { Facebook, Instagram, Twitter } from "@mui/icons-material";
 import Footer from "../Components/Footer"
 
-function Social_Logos() {
+function SocialLogos() {
   return (
     <div className="flex gap-x-3">
-      <Facebook></Facebook>
-      <Instagram></Instagram>
-      <Twitter></Twitter>
+      <Facebook />
+      <Instagram />
+      <Twitter />
     </div>
   );
 }
 
 export default function About() {
-  const context = useContext(AppContext);
-  const [showSideBar, setShowSideBar] = context.sideBarState;
   const about_content1 = `Là một thương hiệu thời trang được thành lập từ nằm 2022, sau 2 ngày hình thành và phát triển, 4CG đã chiếm được tình cảm của các bạn trẻ theo đuổi phong cách đường phố, không phân biệt giới tính. Chúng mình ở đây với mong muốn mang đến cho bạn những sản phầm chất lượng giúp bạn trở nên tự tin và cá tính hơn bao giờ hết. Hãy yêu bản thân theo cách của bạn, hãy tự tin mặc đẹp!`;
   const about_content2 = `Đồng thời 4CG xin bày tỏ lòng cảm ơn sự quan tâm và đồng hành của các G-er trong suốt thời gian phát triển của chúng mình. Chúng mình sẽ luôn hoàn thiện và đổi mới từng ngày để mang đến cho các bạn những sản phẩm tuyệt vời hơn nữa, from 4CG with love!`;
+
   return (
     <div
       className="bg-cover fixed w-full h-screen overflow-auto flex flex-col"
@@ -45,7 +43,7 @@ export default function About() {
             <q>FASHION HAS NO LIMIT</q>
           </div>
           <div className="flex justify-evenly w-2/4 md:w-1/4 md:hidden">
-            <Social_Logos />
+            <SocialLogos />
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
-import { AppContext } from "../hooks/state";
+import { useEffect } from "react";
+import { useAppContext } from "../hooks/state";
 import Header from "../Components/Header";
 import SideBar from "../Components/SideBar";
 import SubSearchBar from "../Components/SubSearchBar";
@@ -12,7 +12,7 @@ import Card from "../Components/Card";
 import Footer from "../Components/Footer";
 
 export default function Products() {
-  const context = useContext(AppContext);
+  const context = useAppContext();
   const [showSideBar, setShowSideBar] = context.sideBarState;
   const hoodiesList = hoodies.map((product) => {
     return (
@@ -71,21 +71,21 @@ export default function Products() {
     );
   });
 
-  React.useEffect(() => {
-    window.onscroll = function () {
-      stickyNav();
-    };
-
-    var navbar = document.getElementById("navbar");
-    var sticky = navbar.offsetTop;
+  useEffect(() => {
+    const navbar = document.getElementById("navbar");
+    const sticky = navbar.offsetTop;
 
     function stickyNav() {
-      if (window.pageYOffset > sticky) {
+      if (window.scrollY > sticky) {
         navbar.classList.add("fixed");
       } else {
         navbar.classList.remove("fixed");
       }
     }
+
+    window.onscroll = () => {
+      stickyNav();
+    };
   });
 
   return (

@@ -1,16 +1,5 @@
 import Link from "next/link";
 
-export default function Auth() {
-  const AuthList = AuthIcon.map((item) => {
-    return (
-      <Link href={item.href} key={item.key}>
-        {item.icon}
-      </Link>
-    );
-  });
-  return <div className="flex gap-x-2 items-center">{AuthList}</div>;
-}
-
 const AuthIcon = [
   {
     key: "cart",
@@ -33,3 +22,14 @@ const AuthIcon = [
     href: "/cart",
   },
 ];
+
+export default function Auth() {
+  const AuthList = AuthIcon.map((item) => {
+    return (
+      <Link href={item.href} key={item.key}>
+        {item.icon}
+      </Link>
+    );
+  });
+  return <div className="flex gap-x-2 items-center">{AuthList}</div>;
+}
