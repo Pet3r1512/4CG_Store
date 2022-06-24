@@ -1,92 +1,91 @@
-import { useEffect } from "react";
-import { useAppContext } from "../hooks/state";
+import { useCallback, useEffect } from "react";
 import Header from "../Components/Header";
 import SideBar from "../Components/SideBar";
 import SubSearchBar from "../Components/SubSearchBar";
-import hoodies from "./products/hoodies.json";
-import minibags from "./products/minibags.json";
-import pants from "./products/pants.json";
-import tshirts from "./products/tshirts.json";
-import wallets from "./products/wallets.json";
 import Card from "../Components/Card";
 import Footer from "../Components/Footer";
+import { getPrismaClient } from "../backend/getPrismaClient";
 
-export default function Products() {
-  const context = useAppContext();
-  const [showSideBar, setShowSideBar] = context.sideBarState;
-  const hoodiesList = hoodies.map((product) => {
-    return (
-      <Card
-        key={product.key}
-        name={product.name}
-        price={product.price}
-        img={product.img}
-        slug={product.slug}
-      />
-    );
+export async function getServerSideProps() {
+  const prisma = getPrismaClient();
+
+  const hoodies = await prisma.product.findMany({
+    where: {
+      type: 'hoodie',
+    },
   });
-  const minibagsList = minibags.map((product) => {
-    return (
-      <Card
-        key={product.key}
-        name={product.name}
-        price={product.price}
-        img={product.img}
-        slug={product.slug}
-      />
-    );
+  const minibags = await prisma.product.findMany({
+    where: {
+      type: 'minibag',
+    },
   });
-  const pantsList = pants.map((product) => {
-    return (
-      <Card
-        key={product.key}
-        name={product.name}
-        price={product.price}
-        img={product.img}
-        slug={product.slug}
-      />
-    );
+  const pants = await prisma.product.findMany({
+    where: {
+      type: 'pants',
+    },
   });
-  const tshirtsList = tshirts.map((product) => {
-    return (
-      <Card
-        key={product.key}
-        name={product.name}
-        price={product.price}
-        img={product.img}
-        slug={product.slug}
-      />
-    );
+  const tshirts = await prisma.product.findMany({
+    where: {
+      type: 'tshirt',
+    },
   });
-  const walletsList = wallets.map((product) => {
-    return (
-      <div key={product.key}>
+  const wallets = await prisma.product.findMany({
+    where: {
+      type: 'wallet',
+    },
+  });
+
+  return {
+    props: {
+      hoodies,
+      minibags,
+      pants,
+      tshirts,
+      wallets,
+    }
+  }
+}
+
+export default function Products({ hoodies, minibags, pants, tshirts, wallets }) {
+  const createProductList = useCallback((products) => {
+    return products.map((product) => {
+      return (
         <Card
+          key={product.key}
           name={product.name}
           price={product.price}
           img={product.img}
           slug={product.slug}
         />
-      </div>
-    );
-  });
+      )
+    })
+  }, []);
 
-  useEffect(() => {
-    const navbar = document.getElementById("navbar");
-    const sticky = navbar.offsetTop;
+  const hoodiesList = createProductList(hoodies);
+  const minibagsList = createProductList(minibags);
+  const pantsList = createProductList(pants);
+  const tshirtsList = createProductList(tshirts);
+  const walletsList = createProductList(wallets);
 
-    function stickyNav() {
-      if (window.scrollY > sticky) {
-        navbar.classList.add("fixed");
-      } else {
-        navbar.classList.remove("fixed");
+  useEffect(
+    () => {
+      const navbar = document.getElementById("navbar");
+      const sticky = navbar.offsetTop;
+
+      function stickyNav() {
+        if (window.scrollY > sticky) {
+          navbar.classList.add("fixed");
+        } else {
+          navbar.classList.remove("fixed");
+        }
       }
-    }
 
-    window.onscroll = () => {
-      stickyNav();
-    };
-  });
+      window.onscroll = () => {
+        stickyNav();
+      };
+    },
+    []
+  );
 
   return (
     <>

@@ -1,31 +1,23 @@
 import { useAppContext } from "../../hooks/state";
-import hoodies from "./hoodies.json";
-import minibags from "./minibags.json";
-import pants from "./pants.json";
-import tshirts from "./tshirts.json";
-import wallets from "./wallets.json";
 import SideBar from "../../Components/SideBar";
 import Header from "../../Components/Header";
 import SubSearchBar from "../../Components/SubSearchBar";
 import Button from "../../Components/Button";
-
-function getProducts(param) {
-  const products = hoodies.concat(wallets, minibags, pants, tshirts);
-  const splitProduct = param.split("-");
-  const key = splitProduct[splitProduct.length - 1];
-
-  const product = products.find((product) => product.key === key);
-
-  if (!product) return null;
-  return product;
-}
+import { getPrismaClient } from '../../backend/getPrismaClient';
 
 export async function getServerSideProps(context) {
-  const product = getProducts(context.query.product);
+  const slug = context.query.product;
+  const slugSplit = slug.split("-");
+  const key = slugSplit[slugSplit.length - 1];
+
+  const prisma = getPrismaClient();
+  const product = await prisma.product.findUnique({
+    where: { key },
+  })
 
   return {
     props: {
-      product: product,
+      product,
     },
   };
 }

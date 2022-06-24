@@ -1,16 +1,27 @@
-import { useAppContext } from "../hooks/state";
 import Header from "../Components/Header";
 import SideBar from "../Components/SideBar";
 import SubSearchBar from "../Components/SubSearchBar";
 import Footer from "../Components/Footer";
 import Card from "../Components/Card";
-import BestSeller from "./products/best.json";
+import { getPrismaClient } from "../backend/getPrismaClient";
 
-export default function Best() {
-  const context = useAppContext();
-  const [showSideBar, setShowSideBar] = context.sideBarState;
+export async function getServerSideProps() {
+  const prisma = getPrismaClient();
+  const bestsellers = await prisma.product.findMany({
+    where: {
+      bestseller: true
+    }
+  });
 
-  const bestList = BestSeller.map((item) => {
+  return {
+    props: {
+      bestsellers
+    }
+  }
+}
+
+export default function Best({ bestsellers }) {
+  const bestList = bestsellers.map((item) => {
     return (
       <Card
         key={item.key}
