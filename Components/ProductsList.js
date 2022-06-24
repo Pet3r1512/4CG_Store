@@ -45,9 +45,7 @@ export default function ProductsList({ input }) {
             />
             <div>
               <p className="font-playfair">{product.name}</p>
-              <span className="font-libre text-rose-400">
-                {product.price} VND
-              </span>
+              <span className="font-libre text-rose-400">{product.price}</span>
             </div>
           </li>
         </Link>
