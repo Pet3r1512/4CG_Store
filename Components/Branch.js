@@ -1,13 +1,13 @@
-export default function Branch(props) {
+export default function Branch({ branch, address, address2 }) {
   return (
     <div className="mx-auto mb-16 text-xl">
       <h1 className="title font-bold text-center underline underline-offset-4">
-        {props.branch}
+        {branch}
       </h1>
       <div className="flex flex-col gap-y-1">
-        <p className="text-center">{props.address}</p>
-        <p className="text-center">{props.address2}</p>
-        {/* {props.address2 && <p className="text-center">{props.address2}</p>} */}
+        <p className="text-center">{address}</p>
+        <p className="text-center">{address2}</p>
+        {/* {address2 && <p className="text-center">{address2}</p>} */}
       </div>
     </div>
   );

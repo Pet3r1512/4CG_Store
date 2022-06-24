@@ -29,13 +29,13 @@ export default function SideBar() {
   }
 }
 
-function SideBarMenu(props) {
+function SideBarMenu({ href, title }) {
   return (
     <li className="">
-      <Link href={props.href} passHref>
+      <Link href={href} passHref>
         <button className="w-full">
           <p className="w-[150px] text-black rounded-2xl flex items-center px-4 py-2 font-medium text-xl">
-            {props.title}
+            {title}
           </p>
         </button>
       </Link>

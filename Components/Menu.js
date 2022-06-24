@@ -11,13 +11,13 @@ export default function Menu() {
   );
 }
 
-function MenuLink(props) {
+function MenuLink({ href, title }) {
   return (
     <li>
-      <Link href={props.href}>
-        <a href={props.href}>
+      <Link href={href}>
+        <a href={href}>
           <p className="font-medium text-lg text-white hover:text-rose-400 transition duration-75 ease-linear">
-            {props.title}{" "}
+            {title}{" "}
           </p>
         </a>
       </Link>
