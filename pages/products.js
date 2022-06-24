@@ -4,16 +4,17 @@ import SideBar from "../Components/SideBar";
 import SubSearchBar from "../Components/SubSearchBar";
 import Card from "../Components/Card";
 import Footer from "../Components/Footer";
+import { convertPrice } from "../hooks/formatPrice";
 import { prisma } from "../backend/getPrismaClient";
 
 export async function getServerSideProps() {
   const products = await prisma.product.findMany();
 
-  const hoodies = products.filter((product) => product.type === 'hoodie');
-  const minibags = products.filter((product) => product.type === 'minibag');
-  const pants = products.filter((product) => product.type === 'pants');
-  const tshirts = products.filter((product) => product.type === 'tshirt');
-  const wallets = products.filter((product) => product.type === 'wallet');
+  const hoodies = products.filter((product) => product.type === "hoodie");
+  const minibags = products.filter((product) => product.type === "minibag");
+  const pants = products.filter((product) => product.type === "pants");
+  const tshirts = products.filter((product) => product.type === "tshirt");
+  const wallets = products.filter((product) => product.type === "wallet");
 
   return {
     props: {
@@ -22,23 +23,29 @@ export async function getServerSideProps() {
       pants,
       tshirts,
       wallets,
-    }
-  }
+    },
+  };
 }
 
-export default function Products({ hoodies, minibags, pants, tshirts, wallets }) {
+export default function Products({
+  hoodies,
+  minibags,
+  pants,
+  tshirts,
+  wallets,
+}) {
   const createProductList = useCallback((products) => {
     return products.map((product) => {
       return (
         <Card
           key={product.key}
           name={product.name}
-          price={product.price}
+          price={(product.price = convertPrice(product.price))}
           img={product.img}
           slug={product.slug}
         />
-      )
-    })
+      );
+    });
   }, []);
 
   const hoodiesList = createProductList(hoodies);
@@ -47,25 +54,22 @@ export default function Products({ hoodies, minibags, pants, tshirts, wallets })
   const tshirtsList = createProductList(tshirts);
   const walletsList = createProductList(wallets);
 
-  useEffect(
-    () => {
-      const navbar = document.getElementById("navbar");
-      const sticky = navbar.offsetTop;
+  useEffect(() => {
+    const navbar = document.getElementById("navbar");
+    const sticky = navbar.offsetTop;
 
-      function stickyNav() {
-        if (window.scrollY > sticky) {
-          navbar.classList.add("fixed");
-        } else {
-          navbar.classList.remove("fixed");
-        }
+    function stickyNav() {
+      if (window.scrollY > sticky) {
+        navbar.classList.add("fixed");
+      } else {
+        navbar.classList.remove("fixed");
       }
+    }
 
-      window.onscroll = () => {
-        stickyNav();
-      };
-    },
-    []
-  );
+    window.onscroll = () => {
+      stickyNav();
+    };
+  }, []);
 
   return (
     <>
