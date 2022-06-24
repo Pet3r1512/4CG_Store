@@ -12,7 +12,7 @@ export default function Card({ img, name, price, slug }) {
       </div>
       <div className="flex flex-col ">
         <h1 className="font-libre text-3xl">{name}</h1>
-        <p className="font-poppins">{price} VND</p>
+        <p className="font-poppins">{price}</p>
       </div>
       <div>
         <Link href={`/products/${slug}`} passHref>
