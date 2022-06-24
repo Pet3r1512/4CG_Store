@@ -13,7 +13,7 @@ model Product {
   id             String           @id @default(cuid())
   type           String
   name           String
-  price          BigInt
+  price          Int
   img            String
   slug           String
   bestseller     Boolean
