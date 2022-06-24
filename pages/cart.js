@@ -1,3 +1,4 @@
+import { useCallback, useState, useEffect } from "react";
 import { useAppContext } from "../hooks/state";
 import Header from "../Components/Header";
 import SideBar from "../Components/SideBar";
@@ -5,12 +6,52 @@ import SubSearchBar from "../Components/SubSearchBar";
 import { convertPrice } from "../hooks/formatPrice";
 
 export default function Cart() {
+  const [customerName, setCustomerName] = useState("");
+  const [customerPhoneNumber, setCustomerPhoneNumber] = useState("");
+  const [receiptId, setReceiptId] = useState("");
+  const [total, setTotal] = useState(0);
+
   const context = useAppContext();
-  const [cart] = context.cartArray;
-  const total = cart.reduce(
-    (subtotal, item) => subtotal + item.price * item.quantity,
-    0
-  );
+  const [cart, setCart] = context.cartArray;
+  useEffect(() => {
+    if (cart.length === 0) {
+      setTotal(0);
+      return;
+    }
+
+    const cartTotal = cart.reduce(
+      (subtotal, item) => subtotal + item.price * item.quantity,
+      0
+    );
+    setTotal(cartTotal);
+  }, [setTotal, cart]);
+
+  const onSubmitCheckout = useCallback(
+    () => {
+      fetch('/api/pay', {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify({
+          customerName,
+          customerPhoneNumber,
+          cart,
+          total,
+        }),
+      })
+        .then((result) => result.json())
+        .then((result) => {
+          setReceiptId(result.receipt.id);
+          setCart([]);
+          setTotal(0);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    },
+    [customerName, customerPhoneNumber, total, cart, setCart]
+  )
 
   return (
     <>
@@ -24,6 +65,35 @@ export default function Cart() {
           <h1 className="text-4xl font-semibold text-black text-center">
             MY CART
           </h1>
+        </div>
+        {receiptId && (
+          <div className="mt-14 mb-16 font-poppins w-full flex flex-col justify-center items-centers">
+            <h1 className="text-4xl font-semibold text-black text-center">
+              Your receipt id is: {receiptId}. We will contact you shortly to confirm the purchase.
+            </h1>
+          </div>
+        )}
+        <div className="mt-14 mb-16 font-poppins w-full flex flex-col justify-center items-centers">
+          <input
+            type="text"
+            placeholder="Customer Name"
+            onChange={(event) => {
+              event.preventDefault();
+              setCustomerName(event.target.value);
+            }}
+            value={customerName}
+          />
+        </div>
+        <div className="mt-14 mb-16 font-poppins w-full flex flex-col justify-center items-centers">
+          <input
+            type="text"
+            placeholder="Customer Phone Number"
+            onChange={(event) => {
+              event.preventDefault();
+              setCustomerPhoneNumber(event.target.value);
+            }}
+            value={customerPhoneNumber}
+          />
         </div>
 
         {cart.length > 0 && cart.map((item) => (
@@ -49,7 +119,10 @@ export default function Cart() {
         </div>
 
         <div className="flex w-full justify-center mt-12">
-          <button className="text-xl bg-black rounded-lg text-white px-4 py-2 font-bold">
+          <button
+            className="text-xl bg-black rounded-lg text-white px-4 py-2 font-bold"
+            onClick={onSubmitCheckout}
+          >
             CHECK OUT
           </button>
         </div>

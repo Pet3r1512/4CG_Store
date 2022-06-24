@@ -1,5 +1,9 @@
 export function convertPrice(val) {
-  var sign = 1;
+  if (val === null || val === undefined) return "0";
+
+  if (val === 0) return "0";
+
+  let sign = 1;
   if (val < 0) {
     sign = -1;
     val = -val;
