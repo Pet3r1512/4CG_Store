@@ -2,7 +2,7 @@ import Header from "../Components/Header";
 import SideBar from "../Components/SideBar";
 import SubSearchBar from "../Components/SubSearchBar";
 import { Facebook, Instagram, Twitter } from "@mui/icons-material";
-import Footer from "../Components/Footer"
+import Footer from "../Components/Footer";
 
 function SocialLogos() {
   return (
