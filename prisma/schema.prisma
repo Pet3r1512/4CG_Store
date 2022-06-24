@@ -25,6 +25,7 @@ model Receipt {
   id                  String           @id @default(cuid())
   customerName        String
   customerPhoneNumber String
+  total               Int
   ReceiptDetails      ReceiptDetails[]
 }
 
@@ -34,4 +35,5 @@ model ReceiptDetails {
   product   Product @relation(fields: [productId], references: [id])
   receiptId String
   productId String
+  quantity  Int
 }
