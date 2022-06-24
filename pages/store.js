@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-key */
 import { useContext } from "react";
 import { AppContext } from "../hooks/state";
 import Header from "../Components/Header";

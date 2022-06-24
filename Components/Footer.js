@@ -21,13 +21,13 @@ export default function Footer() {
             </p>
           </div>
           <div className="h-full sm:flex sm:items-center sm:gap-x-2 sm:justify-end hidden font-semibold">
-            <Link href="" passHref>
+            <Link href="#" passHref>
               <Facebook />
             </Link>
-            <Link href="" passHref>
+            <Link href="#" passHref>
               <Instagram />
             </Link>
-            <Link href="" passHref>
+            <Link href="#" passHref>
               <Twitter />
             </Link>
           </div>
