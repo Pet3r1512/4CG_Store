@@ -11,7 +11,7 @@ export default function Hero() {
           </p>
         </div>
         <div className="font-playfair not-italic text-sm md:text-lg text-white border-2 border-solid rounded-lg p-2 hover:bg-white hover:text-black font-semibold transition duration-200 ease-linear">
-          <Link href="./products">SHOP NOW!</Link>
+          <Link href="/products">SHOP NOW!</Link>
         </div>
       </h1>
     </div>
