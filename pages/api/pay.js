@@ -8,6 +8,15 @@ export default async function handler(req, res) {
 
   const { customerName, customerPhoneNumber, cart, total } = req.body;
 
+  const noCustomerDetails = !customerName || !customerPhoneNumber;
+  const emptyCart = !cart || cart.length <= 0;
+  const noItem = total === 0;
+
+  if (noCustomerDetails || emptyCart || noItem) {
+    res.status(500).json({ message: 'Invalid payment payload' });
+    return;
+  }
+
   try {
     const receipt = await prisma.receipt.create({
       data: {
