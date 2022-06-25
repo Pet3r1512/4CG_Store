@@ -20,12 +20,14 @@ function checkStatus(status) {
   if (status === "success") {
     return checkIcon("#06d6a0");
   }
-  return checkIcon("#ef233c");
+  if (status === "error") {
+    return checkIcon("#ef233c");
+  }
 }
 
 export default function Notice({ content, status }) {
   const noticeTailwind =
-    "z-10 text-white bg-black max-w-[300px] max-h-[50px] text-md font-semibold absolute bottom-5 left-5";
+    "z-10 text-white bg-black max-w-[400px] max-h-[150px] text-md font-semibold absolute bottom-5 left-5 px-4 py-3 flex gap-x-2";
   return (
     <div className={noticeTailwind}>
       <p>{content}</p>
