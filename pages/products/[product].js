@@ -4,6 +4,7 @@ import Header from "../../Components/Header";
 import Footer from "../../Components/Footer";
 import SubSearchBar from "../../Components/SubSearchBar";
 import Button from "../../Components/Button";
+import Notice from "../../Components/Notice";
 import { convertPrice } from "../../hooks/formatPrice";
 import { prisma } from "../../backend/getPrismaClient";
 
