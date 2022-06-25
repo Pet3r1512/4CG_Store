@@ -3,13 +3,17 @@ import { useAppContext } from "../hooks/state";
 import Header from "../Components/Header";
 import SideBar from "../Components/SideBar";
 import SubSearchBar from "../Components/SubSearchBar";
+import Notice from "../Components/Notice";
 import { convertPrice } from "../hooks/formatPrice";
 
 export default function Cart() {
   const [customerName, setCustomerName] = useState("");
   const [customerPhoneNumber, setCustomerPhoneNumber] = useState("");
+  const [showUserInputError, setShowUserInputError] = useState(false);
   const [receiptId, setReceiptId] = useState("");
   const [total, setTotal] = useState(0);
+
+  const noticeTimeOut = 3;
 
   const context = useAppContext();
   const [cart, setCart] = context.cartArray;
@@ -26,32 +30,40 @@ export default function Cart() {
     setTotal(cartTotal);
   }, [setTotal, cart]);
 
-  const onSubmitCheckout = useCallback(
-    () => {
-      fetch('/api/pay', {
-        method: 'POST',
-        headers: {
-          'content-type': 'application/json',
-        },
-        body: JSON.stringify({
-          customerName,
-          customerPhoneNumber,
-          cart,
-          total,
-        }),
+  const onSubmitCheckout = useCallback(() => {
+    if (!customerName || !customerPhoneNumber) {
+      setShowUserInputError(true);
+      return;
+    }
+
+    if (cart.length <= 0) {
+      alert("There's nothing in your cart");
+      return;
+    }
+
+    setShowUserInputError(false);
+    fetch("/api/pay", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        customerName,
+        customerPhoneNumber,
+        cart,
+        total,
+      }),
+    })
+      .then((result) => result.json())
+      .then((result) => {
+        setReceiptId(result.receipt.id);
+        setCart([]);
+        setTotal(0);
       })
-        .then((result) => result.json())
-        .then((result) => {
-          setReceiptId(result.receipt.id);
-          setCart([]);
-          setTotal(0);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    },
-    [customerName, customerPhoneNumber, total, cart, setCart]
-  )
+      .catch((error) => {
+        console.error(error);
+      });
+  }, [customerName, customerPhoneNumber, total, cart, setCart]);
 
   return (
     <>
@@ -66,16 +78,26 @@ export default function Cart() {
             MY CART
           </h1>
         </div>
+        {showUserInputError &&
+          setTimeout(
+            <Notice status="" content="User input error!" />,
+            noticeTimeOut
+          )}
         {receiptId && (
-          <div className="mt-14 mb-16 font-poppins w-full flex flex-col justify-center items-centers">
-            <h1 className="text-4xl font-semibold text-black text-center">
-              Your receipt id is: {receiptId}. We will contact you shortly to confirm the purchase.
-            </h1>
-          </div>
+          <>
+            <Notice status={"success"} content="Payment success!" />
+            <div className="mt-14 mb-16 font-poppins w-full flex flex-col justify-center items-centers">
+              <h1 className="text-4xl font-semibold text-black text-center">
+                Your receipt id is: {receiptId}. We will contact you shortly to
+                confirm the purchase.
+              </h1>
+            </div>
+          </>
         )}
-        <div className="mt-14 mb-16 font-poppins w-full flex flex-col justify-center items-centers">
+        <div className="max-w-5xl mx-auto mt-14 mb-16 font-poppins w-full flex flex-col justify-center items-centers">
           <input
             type="text"
+            className="text-lg px-4 py-2"
             placeholder="Customer Name"
             onChange={(event) => {
               event.preventDefault();
@@ -84,9 +106,10 @@ export default function Cart() {
             value={customerName}
           />
         </div>
-        <div className="mt-14 mb-16 font-poppins w-full flex flex-col justify-center items-centers">
+        <div className="max-w-5xl mx-auto mt-14 mb-16 font-poppins w-full flex flex-col justify-center items-centers">
           <input
             type="text"
+            className="text-lg px-4 py-2"
             placeholder="Customer Phone Number"
             onChange={(event) => {
               event.preventDefault();
@@ -96,22 +119,26 @@ export default function Cart() {
           />
         </div>
 
-        {cart.length > 0 && cart.map((item) => (
-          <div key={item.key} className="flex gap-x-3 sm:gap-x-14 justify-center h-full items-center max-w-5xl mx-auto">
-            <div>
-              <img className="max-w-[120px]" src={item.img} alt="" />
-            </div>
-            <div className="flex flex-col gap-y-2">
-              <p className="text-2xl sm:text-3xl font-bold">{item.name}</p>
-              <p className="text-2xl sm:text-3xl font-semibold text-center">
-                {item.quantity}
+        {cart.length > 0 &&
+          cart.map((item) => (
+            <div
+              key={item.key}
+              className="flex gap-x-3 sm:gap-x-14 justify-center h-full items-center max-w-5xl mx-auto"
+            >
+              <div>
+                <img className="max-w-[120px]" src={item.img} alt="" />
+              </div>
+              <div className="flex flex-col gap-y-2">
+                <p className="text-2xl sm:text-3xl font-bold">{item.name}</p>
+                <p className="text-2xl sm:text-3xl font-semibold text-center">
+                  {item.quantity}
+                </p>
+              </div>
+              <p className="text-2xl font-semibold">
+                {convertPrice(item.price)}
               </p>
             </div>
-            <p className="text-2xl font-semibold">
-              {convertPrice(item.price)}
-            </p>
-          </div>
-        ))}
+          ))}
 
         <div className="flex justify-between items-center py-auto mx-8 sm:mx-20 md:mx-36 px-4 rounded-lg text-2xl sm:text-3xl font-semibold border-2 border-gray-500">
           <p>Total</p>
