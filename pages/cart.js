@@ -110,34 +110,30 @@ export default function Cart() {
             </h1>
           </div>
         )}
-        {cart.length <= 0 && (
-          <>
-            <div className="max-w-5xl mx-auto mt-14 mb-16 font-poppins w-full flex flex-col justify-center items-centers">
-              <input
-                type="text"
-                className="text-lg px-4 py-2"
-                placeholder="Customer Name"
-                onChange={(event) => {
-                  event.preventDefault();
-                  setCustomerName(event.target.value);
-                }}
-                value={customerName}
-              />
-            </div>
-            <div className="max-w-5xl mx-auto mt-14 mb-16 font-poppins w-full flex flex-col justify-center items-centers">
-              <input
-                type="text"
-                className="text-lg px-4 py-2"
-                placeholder="Customer Phone Number"
-                onChange={(event) => {
-                  event.preventDefault();
-                  setCustomerPhoneNumber(event.target.value);
-                }}
-                value={customerPhoneNumber}
-              />
-            </div>
-          </>
-        )}
+        <div className="max-w-5xl mx-auto mt-14 mb-16 font-poppins w-full flex flex-col justify-center items-centers">
+          <input
+            type="text"
+            className="text-lg px-4 py-2"
+            placeholder="Customer Name"
+            onChange={(event) => {
+              event.preventDefault();
+              setCustomerName(event.target.value);
+            }}
+            value={customerName}
+          />
+        </div>
+        <div className="max-w-5xl mx-auto mt-14 mb-16 font-poppins w-full flex flex-col justify-center items-centers">
+          <input
+            type="text"
+            className="text-lg px-4 py-2"
+            placeholder="Customer Phone Number"
+            onChange={(event) => {
+              event.preventDefault();
+              setCustomerPhoneNumber(event.target.value);
+            }}
+            value={customerPhoneNumber}
+          />
+        </div>
 
         {cart.length > 0 &&
           cart.map((item) => (
