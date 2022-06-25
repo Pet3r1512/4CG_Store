@@ -47,7 +47,7 @@ export default function Product({ product }) {
                 {product.name}
               </h1>
               <p className="font-semibold text-lg">
-                {(product.price = convertPrice(product.price))}
+                {convertPrice(product.price)}
               </p>
             </div>
             <Button onClick={addToCartHandler} />
