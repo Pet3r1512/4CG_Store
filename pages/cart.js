@@ -5,6 +5,7 @@ import SideBar from "../Components/SideBar";
 import SubSearchBar from "../Components/SubSearchBar";
 import Notice from "../Components/Notice";
 import { convertPrice } from "../hooks/formatPrice";
+import Footer from "../Components/Footer";
 
 export default function Cart() {
   const [customerName, setCustomerName] = useState("");
@@ -13,10 +14,8 @@ export default function Cart() {
   const [receiptId, setReceiptId] = useState("");
   const [total, setTotal] = useState(0);
 
-  const noticeTimeOut = 3;
-
   const context = useAppContext();
-  const [cart, setCart] = context.cartArray;
+  const [cart, _setCart, resetCart] = context.cartArray;
   useEffect(() => {
     if (cart.length === 0) {
       setTotal(0);
@@ -57,13 +56,13 @@ export default function Cart() {
       .then((result) => result.json())
       .then((result) => {
         setReceiptId(result.receipt.id);
-        setCart([]);
+        resetCart();
         setTotal(0);
       })
       .catch((error) => {
         console.error(error);
       });
-  }, [customerName, customerPhoneNumber, total, cart, setCart]);
+  }, [customerName, customerPhoneNumber, total, cart, resetCart]);
 
   return (
     <>
@@ -72,24 +71,29 @@ export default function Cart() {
         <Header />
         <SubSearchBar />
       </div>
-      <div>
+      <div className="min-h-screen">
         <div className="mt-14 mb-16 font-poppins w-full flex flex-col justify-center items-centers">
           <h1 className="text-4xl font-semibold text-black text-center">
             MY CART
           </h1>
         </div>
-        {showUserInputError &&
-          setTimeout(
-            <Notice status="" content="User input error!" />,
-            noticeTimeOut
-          )}
+        {showUserInputError && (
+          <Notice
+            status={"error"}
+            content="Please fill in your Name and Phone number!"
+          />
+        )}
         {receiptId && (
           <>
-            <Notice status={"success"} content="Payment success!" />
-            <div className="mt-14 mb-16 font-poppins w-full flex flex-col justify-center items-centers">
-              <h1 className="text-4xl font-semibold text-black text-center">
-                Your receipt id is: {receiptId}. We will contact you shortly to
-                confirm the purchase.
+            <Notice
+              status={"success"}
+              content="Payment comfirmed successfully!"
+            />
+            <div className="mt-14 mb-16 font-poppins w-full flex flex-col justify-center items-centers max-w-7xl mx-auto">
+              <h1 className="text-2xl md:text-4xl font-semibold text-gray-700 text-center px-2">
+                Your receipt id is:{" "}
+                <span className="text-black font-bold">{receiptId}</span> .
+                <br></br> We will contact you shortly to confirm the purchase.
               </h1>
             </div>
           </>
@@ -128,7 +132,7 @@ export default function Cart() {
               <div>
                 <img className="max-w-[120px]" src={item.img} alt="" />
               </div>
-              <div className="flex flex-col gap-y-2">
+              <div className="flex flex-col gap-y-2 min-w-[250px] text-center">
                 <p className="text-2xl sm:text-3xl font-bold">{item.name}</p>
                 <p className="text-2xl sm:text-3xl font-semibold text-center">
                   {item.quantity}
@@ -140,20 +144,26 @@ export default function Cart() {
             </div>
           ))}
 
-        <div className="flex justify-between items-center py-auto mx-8 sm:mx-20 md:mx-36 px-4 rounded-lg text-2xl sm:text-3xl font-semibold border-2 border-gray-500">
-          <p>Total</p>
-          <p>{convertPrice(total)}</p>
-        </div>
-
-        <div className="flex w-full justify-center mt-12">
-          <button
-            className="text-xl bg-black rounded-lg text-white px-4 py-2 font-bold"
-            onClick={onSubmitCheckout}
-          >
-            CHECK OUT
-          </button>
-        </div>
+        {cart.length > 0 && (
+          <>
+            <div className="max-w-5xl mx-auto">
+              <div className="flex justify-between items-center py-auto mx-auto sm:mx-20 md:mx-36 px-4 rounded-lg text-2xl sm:text-3xl font-semibold border-2 border-gray-500">
+                <p>Total</p>
+                <p>{convertPrice(total)}</p>
+              </div>
+            </div>
+            <div className="flex w-full justify-center mt-12">
+              <button
+                className="text-xl bg-black rounded-lg text-white px-4 py-2 font-bold"
+                onClick={onSubmitCheckout}
+              >
+                CHECK OUT
+              </button>
+            </div>
+          </>
+        )}
       </div>
+      <Footer />
     </>
   );
 }
