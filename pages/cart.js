@@ -1,5 +1,6 @@
 import { useCallback, useState, useEffect } from "react";
 import { useAppContext } from "../hooks/state";
+import Link from "next/link";
 import Header from "../Components/Header";
 import SideBar from "../Components/SideBar";
 import SubSearchBar from "../Components/SubSearchBar";
@@ -12,6 +13,7 @@ export default function Cart() {
   const [customerPhoneNumber, setCustomerPhoneNumber] = useState("");
   const [showUserInputError, setShowUserInputError] = useState(false);
   const [receiptId, setReceiptId] = useState("");
+  const [showSuccessNotice, setShowSuccessNotice] = useState(false);
   const [total, setTotal] = useState(0);
 
   const context = useAppContext();
@@ -29,6 +31,14 @@ export default function Cart() {
     setTotal(cartTotal);
   }, [setTotal, cart]);
 
+  useEffect(() => {
+    const hideNoticeTimer = setTimeout(() => {
+      setShowUserInputError(false);
+      setShowSuccessNotice(false);
+    }, 3000);
+    return () => clearTimeout(hideNoticeTimer);
+  }, [showUserInputError, showSuccessNotice]);
+
   const onSubmitCheckout = useCallback(() => {
     if (!customerName || !customerPhoneNumber) {
       setShowUserInputError(true);
@@ -41,6 +51,7 @@ export default function Cart() {
     }
 
     setShowUserInputError(false);
+    setShowSuccessNotice(false);
     fetch("/api/pay", {
       method: "POST",
       headers: {
@@ -56,6 +67,7 @@ export default function Cart() {
       .then((result) => result.json())
       .then((result) => {
         setReceiptId(result.receipt.id);
+        setShowSuccessNotice(true);
         resetCart();
         setTotal(0);
       })
@@ -83,20 +95,27 @@ export default function Cart() {
             content="Please fill in your Name and Phone number!"
           />
         )}
+        {showSuccessNotice && (
+          <Notice
+            status={"success"}
+            content="Payment comfirmed successfully!"
+          />
+        )}
         {receiptId && (
-          <>
-            <Notice
-              status={"success"}
-              content="Payment comfirmed successfully!"
-            />
-            <div className="mt-14 mb-16 font-poppins w-full flex flex-col justify-center items-centers max-w-7xl mx-auto">
-              <h1 className="text-2xl md:text-4xl font-semibold text-gray-700 text-center px-2">
-                Your receipt id is:{" "}
-                <span className="text-black font-bold">{receiptId}</span> .
-                <br></br> We will contact you shortly to confirm the purchase.
-              </h1>
+          <div className="mt-14 mb-16 font-poppins w-full flex flex-col justify-center items-centers max-w-7xl mx-auto">
+            <h1 className="text-2xl md:text-4xl font-semibold text-gray-700 text-center px-2">
+              Your receipt id is:{" "}
+              <span className="text-black font-bold">{receiptId}</span> .
+              <br></br> We will contact you shortly to confirm the purchase.
+            </h1>
+            <div>
+              <Link href="./products">
+                <button className="bg-black text-white py-2 px-3">
+                  Shop again
+                </button>
+              </Link>
             </div>
-          </>
+          </div>
         )}
         <div className="max-w-5xl mx-auto mt-14 mb-16 font-poppins w-full flex flex-col justify-center items-centers">
           <input
