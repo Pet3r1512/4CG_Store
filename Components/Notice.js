@@ -1,8 +1,10 @@
-function checkIcon(color) {
+import { useState, useEffect } from "react";
+
+function CheckIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className={"h-6 w-6 text-[" + color + "]"}
+      className={"h-6 w-6"}
       fill="none"
       viewBox="0 0 24 24"
       stroke="currentColor"
@@ -16,22 +18,24 @@ function checkIcon(color) {
     </svg>
   );
 }
-function checkStatus(status) {
-  if (status === "success") {
-    return checkIcon("#06d6a0");
-  }
-  if (status === "error") {
-    return checkIcon("#ef233c");
-  }
-}
 
 export default function Notice({ content, status }) {
-  const noticeTailwind =
-    "z-10 text-white bg-black max-w-[400px] max-h-[150px] text-md font-semibold absolute bottom-5 left-5 px-4 py-3 flex gap-x-2";
+  const baseCss =
+    "z-10 text-white max-w-[400px] max-h-[150px] text-md font-semibold absolute bottom-5 left-5 px-4 py-3 flex gap-x-2 rounded-lg";
+
+  if (status === "success") {
+    return (
+      <div className={`${baseCss} bg-teal-400`}>
+        <p>{content}</p>
+        <CheckIcon />
+      </div>
+    );
+  }
+
   return (
-    <div className={noticeTailwind}>
+    <div className={`${baseCss} bg-rose-500`}>
       <p>{content}</p>
-      {checkStatus(status)}
+      <CheckIcon />
     </div>
   );
 }
