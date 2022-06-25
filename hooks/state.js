@@ -29,9 +29,13 @@ function useCartArray() {
       });
       setCartArray(newCart);
     },
-    [cartArray, setCartArray]);
+    [cartArray, setCartArray]
+  );
 
-  return [cartArray, addToCart];
+  function resetCart() {
+    return setCartArray([]);
+  }
+  return [cartArray, addToCart, resetCart];
 }
 
 export function AppWrapper({ children }) {
