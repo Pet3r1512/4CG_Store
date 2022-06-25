@@ -4,8 +4,7 @@ import Link from "next/link";
 
 async function findProductFromApi(name) {
   try {
-    return await fetch(`/api/search/${name}`)
-      .then((res) => res.json());
+    return await fetch(`/api/search/${name}`).then((res) => res.json());
   } catch (error) {
     console.error(error);
     return null;
@@ -14,20 +13,17 @@ async function findProductFromApi(name) {
 
 export default function ProductsList({ input }) {
   const [products, setProducts] = useState([]);
-  useEffect(
-    () => {
-      if (!input) {
-        setProducts([]);
-        return;
-      }
+  useEffect(() => {
+    if (!input) {
+      setProducts([]);
+      return;
+    }
 
-      findProductFromApi(input)
-        .then((apiResult) => {
-          const products = apiResult.products;
-          setProducts(products);
-        });
-    },
-    [input]);
+    findProductFromApi(input).then((apiResult) => {
+      const products = apiResult.products;
+      setProducts(products);
+    });
+  }, [input]);
 
   return (
     <ul
@@ -36,7 +32,7 @@ export default function ProductsList({ input }) {
     >
       {products.map((product) => (
         <Link key={product.key} href={`/products/${product.slug}`} passHref>
-          <li className="flex gap-4 p-2 pl-4 border border-b-2 hover:bg-gray-200 bg-cover w-full h-full rounded-lg hover:cursor-pointer">
+          <li className="flex gap-4 p-2 pl-4 border border-b-2 hover:bg-gray-200 bg-cover w-full h-full rounded-lg hover:cursor-pointer text-black">
             <Image
               alt="product image"
               src={product.img}

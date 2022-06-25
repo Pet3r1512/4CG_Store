@@ -16,7 +16,7 @@ export default function SearchBar() {
           <input
             type="text"
             placeholder="Search..."
-            className="h-[35px] w-[350px] rounded-lg pl-3 pr-8"
+            className="h-[35px] w-[350px] rounded-lg pl-3 pr-8 text-black"
             onChange={onChangeHandler}
           />
           <div className="inline-block relative">
