@@ -108,39 +108,36 @@ export default function Cart() {
               <span className="text-black font-bold">{receiptId}</span> .
               <br></br> We will contact you shortly to confirm the purchase.
             </h1>
-            <div>
-              <Link href="./products">
-                <button className="bg-black text-white py-2 px-3">
-                  Shop again
-                </button>
-              </Link>
-            </div>
           </div>
         )}
-        <div className="max-w-5xl mx-auto mt-14 mb-16 font-poppins w-full flex flex-col justify-center items-centers">
-          <input
-            type="text"
-            className="text-lg px-4 py-2"
-            placeholder="Customer Name"
-            onChange={(event) => {
-              event.preventDefault();
-              setCustomerName(event.target.value);
-            }}
-            value={customerName}
-          />
-        </div>
-        <div className="max-w-5xl mx-auto mt-14 mb-16 font-poppins w-full flex flex-col justify-center items-centers">
-          <input
-            type="text"
-            className="text-lg px-4 py-2"
-            placeholder="Customer Phone Number"
-            onChange={(event) => {
-              event.preventDefault();
-              setCustomerPhoneNumber(event.target.value);
-            }}
-            value={customerPhoneNumber}
-          />
-        </div>
+        {cart.length <= 0 && (
+          <>
+            <div className="max-w-5xl mx-auto mt-14 mb-16 font-poppins w-full flex flex-col justify-center items-centers">
+              <input
+                type="text"
+                className="text-lg px-4 py-2"
+                placeholder="Customer Name"
+                onChange={(event) => {
+                  event.preventDefault();
+                  setCustomerName(event.target.value);
+                }}
+                value={customerName}
+              />
+            </div>
+            <div className="max-w-5xl mx-auto mt-14 mb-16 font-poppins w-full flex flex-col justify-center items-centers">
+              <input
+                type="text"
+                className="text-lg px-4 py-2"
+                placeholder="Customer Phone Number"
+                onChange={(event) => {
+                  event.preventDefault();
+                  setCustomerPhoneNumber(event.target.value);
+                }}
+                value={customerPhoneNumber}
+              />
+            </div>
+          </>
+        )}
 
         {cart.length > 0 &&
           cart.map((item) => (
