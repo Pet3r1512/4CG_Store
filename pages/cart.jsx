@@ -1,12 +1,12 @@
 import { useCallback, useState, useEffect } from "react";
-import { useAppContext } from "../hooks/state";
-import Link from "next/link";
-import Header from "../Components/Header";
-import SideBar from "../Components/SideBar";
-import SubSearchBar from "../Components/SubSearchBar";
-import Notice from "../Components/Notice";
-import { convertPrice } from "../hooks/formatPrice";
-import Footer from "../Components/Footer";
+import Header from "../src/layout/Header";
+import SideBar from "../src/layout/SideBar";
+import SubSearchBar from "../src/layout/SubSearchBar";
+import Notice from "../src/layout/Notice";
+import Footer from "../src/layout/Footer";
+import { useAppContext } from "../src/hooks/state";
+import { convertPrice } from "../src/products/formatPrice";
+
 
 export default function Cart() {
   const [customerName, setCustomerName] = useState("");

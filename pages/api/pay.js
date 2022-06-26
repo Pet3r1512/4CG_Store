@@ -1,4 +1,4 @@
-import { prisma } from '../../backend/getPrismaClient';
+import { prisma } from '../..../src/client/getPrismaClient';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {

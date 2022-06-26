@@ -1,12 +1,11 @@
-import { useAppContext } from "../../hooks/state";
-import SideBar from "../../Components/SideBar";
-import Header from "../../Components/Header";
-import Footer from "../../Components/Footer";
-import SubSearchBar from "../../Components/SubSearchBar";
-import Button from "../../Components/Button";
-import Notice from "../../Components/Notice";
-import { convertPrice } from "../../hooks/formatPrice";
-import { prisma } from "../../backend/getPrismaClient";
+import SideBar from "../../src/layout/SideBar";
+import Header from "../../src/layout/Header";
+import Footer from "../../src/layout/Footer";
+import SubSearchBar from "../../src/layout/SubSearchBar";
+import Button from "../../src/layout/Button";
+import { useAppContext } from "../../src/hooks/state";
+import { convertPrice } from "../../src/hooks/formatPrice";
+import { prisma } from "../../src/client/getPrismaClient";
 
 export async function getServerSideProps(context) {
   const slug = context.query.product;

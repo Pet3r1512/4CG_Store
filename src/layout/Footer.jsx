@@ -7,10 +7,10 @@ export default function Footer() {
       <div className="flex items-center py-4 max-w-7xl mx-auto">
         <div className="w-full grid grid-cols-3">
           <div className="sm:flex sm:items-center sm:gap-x-2 hidden font-semibold sm:text-sm">
-            <Link href="./about">
+            <Link href="/about">
               <a href="">About 4CG</a>
             </Link>
-            <Link href="./policy">
+            <Link href="/policy">
               <a href="">Return Policy</a>
             </Link>
           </div>

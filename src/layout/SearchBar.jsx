@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ProductsList from "./ProductsList";
+import ProductsList from "../products/ProductsList";
 
 export default function SearchBar() {
   const [input, setInput] = useState("");

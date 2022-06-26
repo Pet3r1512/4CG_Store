@@ -1,8 +1,8 @@
 import Head from "next/head";
-import Header from "../Components/Header";
-import SubSearchBar from "../Components/SubSearchBar";
-import SideBar from "../Components/SideBar";
-import Hero from "../Components/Hero";
+import Header from "../src/layout/Header";
+import SubSearchBar from "../src/layout/SubSearchBar";
+import SideBar from "../src/layout/SideBar";
+import Hero from "../src/storeInfo/Hero";
 
 function Tab() {
   return (

@@ -1,9 +1,9 @@
-import Header from "../Components/Header";
-import SideBar from "../Components/SideBar";
-import SubSearchBar from "../Components/SubSearchBar";
-import Footer from "../Components/Footer";
-import Card from "../Components/Card";
-import { prisma } from "../backend/getPrismaClient";
+import Header from "../src/layout/Header";
+import SideBar from "../src/layout/SideBar";
+import SubSearchBar from "../src/layout/SubSearchBar";
+import Footer from "../src/layout/Footer";
+import Card from "../src/products/Card";
+import { prisma } from "../src/client/getPrismaClient";
 
 export async function getServerSideProps() {
   const bestsellers = await prisma.product.findMany({

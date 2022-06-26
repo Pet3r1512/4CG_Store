@@ -4,9 +4,8 @@
 
 /* Font serif */
 @font-face {
-  font-family: "Libre Baskerville";
+  font-family: "Libre Baskerville", "Playfair Display";
   src: url("/fonts/LibreBaskerville-Regular.ttf");
-  font-family: "Playfair Display";
   src: url("/fonts/PlayfairDisplay-Regular.ttf");
 }
 

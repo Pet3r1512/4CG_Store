@@ -1,7 +1,7 @@
-import SideBar from "../Components/SideBar"
-import Header from "../Components/Header"
-import Footer from "../Components/Footer"
-import SubSearchBar from "../Components/SubSearchBar"
+import SideBar from "../src/layout/SideBar"
+import Header from "../src/layout/Header"
+import Footer from "../src/layout/Footer"
+import SubSearchBar from "../src/layout/SubSearchBar"
 
 export default function Policy (){
    return (

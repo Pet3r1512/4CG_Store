@@ -1,11 +1,11 @@
 import { useCallback, useEffect } from "react";
-import Header from "../Components/Header";
-import SideBar from "../Components/SideBar";
-import SubSearchBar from "../Components/SubSearchBar";
-import Card from "../Components/Card";
-import Footer from "../Components/Footer";
-import { convertPrice } from "../hooks/formatPrice";
-import { prisma } from "../backend/getPrismaClient";
+import Header from "../src/layout/Header";
+import SideBar from "../src/layout/SideBar";
+import SubSearchBar from "../src/layout/SubSearchBar";
+import Card from "../src/products/Card";
+import Footer from "../src/layout/Footer";
+import { convertPrice } from "../src/hooks/formatPrice";
+import { prisma } from "../src/client/getPrismaClient";
 
 export async function getServerSideProps() {
   const products = await prisma.product.findMany();

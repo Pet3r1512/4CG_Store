@@ -1,8 +1,8 @@
-import Header from "../Components/Header";
-import SideBar from "../Components/SideBar";
-import SubSearchBar from "../Components/SubSearchBar";
 import { Facebook, Instagram, Twitter } from "@mui/icons-material";
-import Footer from "../Components/Footer";
+import Header from "../src/layout/Header";
+import SideBar from "../src/layout/SideBar";
+import SubSearchBar from "../src/layout/SubSearchBar";
+import Footer from "../src/layout/Footer";
 
 function SocialLogos() {
   return (
