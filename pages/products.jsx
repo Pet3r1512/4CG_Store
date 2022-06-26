@@ -10,30 +10,17 @@ import { prisma } from "../src/client/getPrismaClient";
 export async function getServerSideProps() {
   const products = await prisma.product.findMany();
 
-  const hoodies = products.filter((product) => product.type === "hoodie");
-  const minibags = products.filter((product) => product.type === "minibag");
-  const pants = products.filter((product) => product.type === "pants");
-  const tshirts = products.filter((product) => product.type === "tshirt");
-  const wallets = products.filter((product) => product.type === "wallet");
+  const types = Array.from(new Set([...products.map((product) => product.type)]));
 
   return {
     props: {
-      hoodies,
-      minibags,
-      pants,
-      tshirts,
-      wallets,
+      types,
+      products,
     },
   };
 }
 
-export default function Products({
-  hoodies,
-  minibags,
-  pants,
-  tshirts,
-  wallets,
-}) {
+export default function Products({ types, products }) {
   const createProductList = useCallback((products) => {
     return products.map((product) => {
       return (
@@ -48,11 +35,17 @@ export default function Products({
     });
   }, []);
 
-  const hoodiesList = createProductList(hoodies);
-  const minibagsList = createProductList(minibags);
-  const pantsList = createProductList(pants);
-  const tshirtsList = createProductList(tshirts);
-  const walletsList = createProductList(wallets);
+  const productsByType = types.map((type) => {
+    const productList = products.filter((product) => product.type === type);
+    return (
+      <div key={type}>
+        <h1 className="text-3xl font-extrabold">{`${type.substring(0,1).toUpperCase()}${type.substring(1)}`}</h1>
+        <div className="grid grid-cols-1 sm:grid-cols-2 sm:gap-3 lg:grid-cols-3 lg:gap-5">
+          {createProductList(productList)}
+        </div>
+      </div>
+    );
+  });
 
   useEffect(() => {
     const navbar = document.getElementById("navbar");
@@ -79,36 +72,7 @@ export default function Products({
         <SubSearchBar />
       </div>
       <div className="relative max-w-7xl mx-auto my-14 px-3 sm:px-4 lg:px-0 flex flex-col gap-y-14">
-        <div>
-          <h1 className="text-3xl font-extrabold">Hoodies</h1>
-          <div className="grid grid-cols-1 sm:grid-cols-2 sm:gap-3 lg:grid-cols-3 lg:gap-5">
-            {hoodiesList}
-          </div>
-        </div>
-        <div>
-          <h1 className="text-3xl font-extrabold">Mini Bags</h1>
-          <div className="grid grid-cols-1 sm:grid-cols-2 sm:gap-3 lg:grid-cols-3 lg:gap-5">
-            {minibagsList}
-          </div>
-        </div>
-        <div>
-          <h1 className="text-3xl font-extrabold">Pants</h1>
-          <div className="grid grid-cols-1 sm:grid-cols-2 sm:gap-3 lg:grid-cols-3 lg:gap-5">
-            {pantsList}
-          </div>
-        </div>
-        <div>
-          <h1 className="text-3xl font-extrabold">T-shirts</h1>
-          <div className="grid grid-cols-1 sm:grid-cols-2 sm:gap-3 lg:grid-cols-3 lg:gap-5">
-            {tshirtsList}
-          </div>
-        </div>
-        <div>
-          <h1 className="text-3xl font-extrabold">Wallets</h1>
-          <div className="grid grid-cols-1 sm:grid-cols-2 sm:gap-3 lg:grid-cols-3 lg:gap-5">
-            {walletsList}
-          </div>
-        </div>
+        {productsByType}
       </div>
       <Footer />
     </>
