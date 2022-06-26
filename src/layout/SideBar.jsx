@@ -1,11 +1,14 @@
 import Link from "next/link";
-import { useAppContext } from "../hooks/state";
+import { useAppStore } from "../store";
 import CloseIcon from './CloseIcon';
 import MenuItem from './MenuItem';
 
 export default function SideBar() {
-  const context = useAppContext();
-  const [showSideBar, setShowSideBar] = context.sideBarState;
+  const { showSideBar, toggleSideBar } = useAppStore((state) => ({
+    showSideBar: state.showSideBar,
+    toggleSideBar: state.toggleSideBar,
+  }));
+
   if (!showSideBar) {
     return <div className="hidden"></div>;
   }
@@ -27,7 +30,7 @@ export default function SideBar() {
   return (
     <div className="pt-5 px-3 h-screen w-2/4 bg-white absolute z-10 top-0 transition duration-100 ease-linear flex flex-col gap-y-12 rounded-r-3xl border-[2px] border-[#999] text-black">
       <div>
-        <CloseIcon onClick={() => setShowSideBar(!showSideBar)} />
+        <CloseIcon onClick={() => toggleSideBar(false)} />
       </div>
       <div className="mr-10">
         <ul className="flex flex-col gap-y-2">{SideBarMenuList}</ul>

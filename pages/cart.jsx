@@ -1,9 +1,8 @@
 import { useCallback, useState, useEffect } from "react";
 import Notice from "../src/layout/Notice";
 import Template from "../src/layout/Template";
-import { useAppContext } from "../src/hooks/state";
+import { useAppStore } from "../src/store";
 import { convertPrice } from "../src/products/formatPrice";
-
 
 export default function Cart() {
   const [customerName, setCustomerName] = useState("");
@@ -13,8 +12,10 @@ export default function Cart() {
   const [showSuccessNotice, setShowSuccessNotice] = useState(false);
   const [total, setTotal] = useState(0);
 
-  const context = useAppContext();
-  const [cart, _setCart, resetCart] = context.cartArray;
+  const { cart, resetCart } = useAppStore((state) => ({
+    cart: state.cart,
+    resetCart: state.resetCart,
+  }));
   useEffect(() => {
     if (cart.length === 0) {
       setTotal(0);
