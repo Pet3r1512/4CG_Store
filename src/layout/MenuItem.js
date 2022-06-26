@@ -12,8 +12,8 @@ const MenuItem = [
     title: "Best",
   },
   {
-    href: "/store",
-    title: "Store",
+    href: "/location",
+    title: "Location",
   },
   {
     href: "/about",
