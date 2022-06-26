@@ -1,4 +1,4 @@
-import { prisma } from '../../../src/client/getPrismaClient';
+import { prisma } from "../../src/client/getPrismaClient";
 
 export default async function handler(req, res) {
   if (req.method !== 'GET') {
@@ -6,18 +6,10 @@ export default async function handler(req, res) {
     return;
   }
 
-  const { searchTerm } = req.query;
-  if (!searchTerm) {
-    res.status(500).json({ message: 'Invalid search term' });
-    return;
-  }
-
   try {
     const products = await prisma.product.findMany({
       where: {
-        name: {
-          contains: searchTerm,
-        }
+        bestseller: true
       }
     });
     res.status(200).json({ products });

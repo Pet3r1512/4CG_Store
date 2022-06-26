@@ -3,34 +3,19 @@ import SideBar from "../src/layout/SideBar";
 import SubSearchBar from "../src/layout/SubSearchBar";
 import Footer from "../src/layout/Footer";
 import Card from "../src/products/Card";
-import { prisma } from "../src/client/getPrismaClient";
+import useFetch from "../src/client/swr";;
 
-export async function getServerSideProps() {
-  const bestsellers = await prisma.product.findMany({
-    where: {
-      bestseller: true
-    }
-  });
-
-  return {
-    props: {
-      bestsellers
-    }
-  }
-}
-
-export default function Best({ bestsellers }) {
-  const bestList = bestsellers.map((item) => {
+export default function Best() {
+  const { data, isLoading, error } = useFetch('/api/best');
+  if (error) {
     return (
-      <Card
-        key={item.key}
-        name={item.name}
-        price={item.price}
-        img={item.img}
-        slug={item.slug}
-      />
+      <>
+        <h1>
+          Error loading best sellers
+        </h1>
+      </>
     );
-  });
+  }
 
   return (
     <>
@@ -43,7 +28,18 @@ export default function Best({ bestsellers }) {
         <div>
           <h1 className="text-3xl font-extrabold">Best Sellers</h1>
           <div className="grid grid-cols-1 sm:grid-cols-2 sm:gap-3 lg:grid-cols-3 lg:gap-5">
-            {bestList}
+            {isLoading && <>Loading...</>}
+            {data && data.products.map((item) => {
+              return (
+                <Card
+                  key={item.key}
+                  name={item.name}
+                  price={item.price}
+                  img={item.img}
+                  slug={item.slug}
+                />
+              );
+            })}
           </div>
         </div>
       </div>

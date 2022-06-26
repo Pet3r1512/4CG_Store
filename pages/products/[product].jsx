@@ -1,59 +1,44 @@
+import { useRouter } from "next/router";
 import SideBar from "../../src/layout/SideBar";
 import Header from "../../src/layout/Header";
 import Footer from "../../src/layout/Footer";
 import SubSearchBar from "../../src/layout/SubSearchBar";
-import Button from "../../src/layout/Button";
+import NavBar from "../../src/layout/NavBar";
+import ProductSection from "../../src/products/ProductSection";
 import { useAppContext } from "../../src/hooks/state";
-import { convertPrice } from "../../src/hooks/formatPrice";
-import { prisma } from "../../src/client/getPrismaClient";
+import useFetch from "../../src/client/swr";
 
-export async function getServerSideProps(context) {
-  const slug = context.query.product;
+function getKeyFromSlug(slug) {
   const slugSplit = slug.split("-");
   const key = slugSplit[slugSplit.length - 1];
-
-  const product = await prisma.product.findUnique({
-    where: { key },
-  });
-
-  return {
-    props: {
-      product,
-    },
-  };
+  return key;
 }
 
-export default function Product({ product }) {
+export default function Product() {
+  const router = useRouter();
+  const { product: slug } = router.query;
+  const { data, isLoading, error } = useFetch(slug ? `/api/product/${getKeyFromSlug(slug)}` : null);
+
   const context = useAppContext();
   const [_cart, addToCart] = context.cartArray;
 
-  const addToCartHandler = () => addToCart(product);
+  if (error) {
+    return (
+      <h1>
+        Error loading product.
+      </h1>
+    )
+  }
 
   return (
     <>
       <SideBar />
-      <div className="bg-gray-600 pb-5" id="navbar">
+      <NavBar>
         <Header />
         <SubSearchBar />
-      </div>
-      <div className="max-w-7xl mx-auto px-12 flex min-h-screen justify-center items-center">
-        <div className="my-20 w-full flex flex-col sm:flex-row sm:justify-center items-center">
-          <div className="max-w-[300px] sm:max-w-[450px] md:max-w-[500px] mx-auto">
-            <img src={product.img} alt="" />
-          </div>
-          <div className="mx-[30px] sm:mx-auto w-full flex flex-col justify-center gap-y-5 sm:pl-12 md:pl-36">
-            <div className="flex flex-col gap-y-1">
-              <h1 className="font-poppins font-bold text-2xl">
-                {product.name}
-              </h1>
-              <p className="font-semibold text-lg">
-                {convertPrice(product.price)}
-              </p>
-            </div>
-            <Button onClick={addToCartHandler} />
-          </div>
-        </div>
-      </div>
+      </NavBar>
+      {isLoading && <>Loading...</>}
+      {data && <ProductSection {...data.product} onClick={() => addToCart(data.product)} />}
       <Footer />
     </>
   );
