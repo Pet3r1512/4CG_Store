@@ -1,8 +1,5 @@
-import Header from "../src/layout/Header";
-import SideBar from "../src/layout/SideBar";
 import Branch from "../src/storeInfo/Branch";
-import SubSearchBar from "../src/layout/SubSearchBar";
-import Footer from "../src/layout/Footer"
+import Template from "../src/layout/Template";
 
 export function getStaticProps() {
   const branchData = [
@@ -53,21 +50,13 @@ export default function Store({ branchData }) {
   });
 
   return (
-    <>
-      <SideBar />
-      <div>
-        <div className="bg-gray-600 pb-5">
-          <Header />
-          <SubSearchBar />
-        </div>
-        <div className="flex flex-col mt-14 gap-10">
-          <h1 className="text-4xl font-bold text-black text-center">Store</h1>
-          <div className="min-h-screen flex flex-col items-center justify-center">
-            {branchMap}
-          </div>
+    <Template>
+      <div className="flex flex-col mt-14 gap-10">
+        <h1 className="text-4xl font-bold text-black text-center">Store</h1>
+        <div className="min-h-screen flex flex-col items-center justify-center">
+          {branchMap}
         </div>
       </div>
-      <Footer />
-    </>
+    </Template>
   );
 }

@@ -1,10 +1,6 @@
-import { useCallback, useEffect } from "react";
-import Header from "../src/layout/Header";
-import SideBar from "../src/layout/SideBar";
-import SubSearchBar from "../src/layout/SubSearchBar";
+import { useCallback } from "react";
 import Category from "../src/products/Category";
-import Footer from "../src/layout/Footer";
-import NavBar from "../src/layout/NavBar";
+import Template from "../src/layout/Template";
 import useFetch from "../src/client/swr";
 
 export default function Products() {
@@ -30,35 +26,12 @@ export default function Products() {
     );
   }
 
-  useEffect(() => {
-    const navbar = document.getElementById("navbar");
-    const sticky = navbar.offsetTop;
-
-    function stickyNav() {
-      if (window.scrollY > sticky) {
-        navbar.classList.add("fixed");
-      } else {
-        navbar.classList.remove("fixed");
-      }
-    }
-
-    window.onscroll = () => {
-      stickyNav();
-    };
-  }, []);
-
   return (
-    <>
-      <SideBar />
-      <NavBar>
-        <Header />
-        <SubSearchBar />
-      </NavBar>
+    <Template>
       <div className="relative max-w-7xl mx-auto my-14 px-3 sm:px-4 lg:px-0 flex flex-col gap-y-14">
         {isLoading && <>Loading...</>}
         {data && createProductList(data.products)}
       </div>
-      <Footer />
-    </>
+    </Template>
   );
 }

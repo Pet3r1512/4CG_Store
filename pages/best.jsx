@@ -3,7 +3,8 @@ import SideBar from "../src/layout/SideBar";
 import SubSearchBar from "../src/layout/SubSearchBar";
 import Footer from "../src/layout/Footer";
 import Card from "../src/products/Card";
-import useFetch from "../src/client/swr";;
+import NavBar from "../src/layout/NavBar";
+import useFetch from "../src/client/swr";
 
 export default function Best() {
   const { data, isLoading, error } = useFetch('/api/best');
@@ -20,10 +21,10 @@ export default function Best() {
   return (
     <>
       <SideBar />
-      <div className="w-full z-10 top-0 bg-gray-600 pb-5" id="navbar">
+      <NavBar>
         <Header />
         <SubSearchBar />
-      </div>
+      </NavBar>
       <div className="relative max-w-7xl mx-auto my-14 px-3 sm:px-4 lg:px-0 flex flex-col gap-y-14">
         <div>
           <h1 className="text-3xl font-extrabold">Best Sellers</h1>

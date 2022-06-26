@@ -1,9 +1,5 @@
 import { useRouter } from "next/router";
-import SideBar from "../../src/layout/SideBar";
-import Header from "../../src/layout/Header";
-import Footer from "../../src/layout/Footer";
-import SubSearchBar from "../../src/layout/SubSearchBar";
-import NavBar from "../../src/layout/NavBar";
+import Template from "../../src/layout/Template";
 import ProductSection from "../../src/products/ProductSection";
 import { useAppContext } from "../../src/hooks/state";
 import useFetch from "../../src/client/swr";
@@ -31,15 +27,9 @@ export default function Product() {
   }
 
   return (
-    <>
-      <SideBar />
-      <NavBar>
-        <Header />
-        <SubSearchBar />
-      </NavBar>
+    <Template>
       {isLoading && <>Loading...</>}
       {data && <ProductSection {...data.product} onClick={() => addToCart(data.product)} />}
-      <Footer />
-    </>
+    </Template>
   );
 }

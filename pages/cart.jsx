@@ -1,9 +1,6 @@
 import { useCallback, useState, useEffect } from "react";
-import Header from "../src/layout/Header";
-import SideBar from "../src/layout/SideBar";
-import SubSearchBar from "../src/layout/SubSearchBar";
 import Notice from "../src/layout/Notice";
-import Footer from "../src/layout/Footer";
+import Template from "../src/layout/Template";
 import { useAppContext } from "../src/hooks/state";
 import { convertPrice } from "../src/products/formatPrice";
 
@@ -77,12 +74,7 @@ export default function Cart() {
   }, [customerName, customerPhoneNumber, total, cart, resetCart]);
 
   return (
-    <>
-      <SideBar />
-      <div className="w-full z-10 top-0 bg-gray-600 pb-5" id="navbar">
-        <Header />
-        <SubSearchBar />
-      </div>
+    <Template>
       <div className="min-h-screen">
         <div className="mt-14 mb-16 font-poppins w-full flex flex-col justify-center items-centers">
           <h1 className="text-4xl font-semibold text-black text-center">
@@ -175,7 +167,6 @@ export default function Cart() {
           </>
         )}
       </div>
-      <Footer />
-    </>
+    </Template>
   );
 }
