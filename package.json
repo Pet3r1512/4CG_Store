@@ -11,6 +11,9 @@
     "prisma:generate": "prisma generate",
     "prisma:deploy": "prisma deploy"
   },
+  "prisma": {
+    "seed": "node prisma/insertProducts.js"
+  },
   "dependencies": {
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
