@@ -1,4 +1,5 @@
 import { useCallback, useState, useEffect } from "react";
+import Image from "next/image";
 import Notice from "../src/layout/Notice";
 import Template from "../src/layout/Template";
 import { useAppStore } from "../src/store";
@@ -135,7 +136,13 @@ export default function Cart() {
               className="flex gap-x-3 sm:gap-x-14 justify-center h-full items-center max-w-5xl mx-auto"
             >
               <div>
-                <img className="max-w-[120px]" src={item.img} alt="" />
+                <Image
+                  className="max-w-[120px]"
+                  src={item.img}
+                  alt={`${item.name} image`}
+                  width={200}
+                  height={300}
+                />
               </div>
               <div className="flex flex-col gap-y-2 min-w-[250px] text-center">
                 <p className="text-2xl sm:text-3xl font-bold">{item.name}</p>

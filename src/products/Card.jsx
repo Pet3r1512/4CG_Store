@@ -1,13 +1,16 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Card({ img, name, price, slug }) {
   return (
     <div className="mx-auto mt-4 card px-6 pb-4 flex flex-col gap-2 items-center">
       <div className="min-h-[550px] flex items-center">
-        <img
-          src={img}
-          alt=""
+        <Image
           className="max-w-[300px] min-w-[200px] sm:max-w-[350px] sm:min-w-[300px] "
+          src={img}
+          alt={`${name} img`}
+          width={600}
+          height={900}
         />
       </div>
       <div className="flex flex-col ">
