@@ -1,8 +1,8 @@
-import { prisma } from '../../src/client/getPrismaClient';
+import { prisma } from "../../src/client/getPrismaClient";
 
 export default async function handler(req, res) {
-  if (req.method !== 'POST') {
-    res.status(500).json({ message: 'Unsupported method' });
+  if (req.method !== "POST") {
+    res.status(500).json({ message: "Unsupported method" });
     return;
   }
 
@@ -13,7 +13,7 @@ export default async function handler(req, res) {
   const noItem = total === 0;
 
   if (noCustomerDetails || emptyCart || noItem) {
-    res.status(500).json({ message: 'Invalid payment payload' });
+    res.status(500).json({ message: "Invalid payment payload" });
     return;
   }
 
@@ -25,15 +25,18 @@ export default async function handler(req, res) {
         total,
         ReceiptDetails: {
           createMany: {
-            data: cart.map((item) => ({ productId: item.id, quantity: item.quantity }))
+            data: cart.map((item) => ({
+              productId: item.id,
+              quantity: item.quantity,
+            })),
           },
-        }
-      }
+        },
+      },
     });
 
-    res.status(200).json({ message: 'payment success', receipt });
+    res.status(200).json({ message: "payment success", receipt });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: 'database connection error'});
+    res.status(500).json({ message: "database connection error" });
   }
 }

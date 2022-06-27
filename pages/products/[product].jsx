@@ -13,21 +13,24 @@ function getKeyFromSlug(slug) {
 export default function Product() {
   const router = useRouter();
   const { product: slug } = router.query;
-  const { data, isLoading, error } = useFetch(slug ? `/api/product/${getKeyFromSlug(slug)}` : null);
+  const { data, isLoading, error } = useFetch(
+    slug ? `/api/product/${getKeyFromSlug(slug)}` : null
+  );
   const addToCart = useAppStore((state) => state.addToCart);
 
   if (error) {
-    return (
-      <h1>
-        Error loading product.
-      </h1>
-    )
+    return <h1>Error loading product.</h1>;
   }
 
   return (
     <Template>
       {isLoading && <>Loading...</>}
-      {data && <ProductSection {...data.product} onClick={() => addToCart(data.product)} />}
+      {data && (
+        <ProductSection
+          {...data.product}
+          onClick={() => addToCart(data.product)}
+        />
+      )}
     </Template>
   );
 }

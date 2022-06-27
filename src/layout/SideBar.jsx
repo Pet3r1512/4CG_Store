@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useAppStore } from "../store";
-import CloseIcon from './CloseIcon';
-import MenuItem from './MenuItem';
+import CloseIcon from "./CloseIcon";
+import MenuItem from "./MenuItem";
 
 export default function SideBar() {
   const { showSideBar, toggleSideBar } = useAppStore((state) => ({

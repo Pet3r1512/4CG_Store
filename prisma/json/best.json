@@ -1,42 +1,42 @@
 [
-    {
-        "key": "h2",
-        "name": "Patchowork Mint",
-        "price": 750000,
-        "img": "/images/products/Hoodies/h2.jpg",
-        "bestseller": false,
-        "slug": "Patchowork_Mint-h2"
-    },
-    {
-        "key": "h4",
-        "name": "Dark Grey",
-        "price": 600000,
-        "img": "/images/products/Hoodies/h4.jpg",
-        "bestseller": false,
-        "slug": "Dark_Grey-h4"
-    },
-    {
-        "key": "mb2",
-        "name": "Lolipop",
-        "price": 390000,
-        "img": "/images/products/Mini_Bags/mb2.jpg",
-        "bestseller": true,
-        "slug": "Lolipop-mb2"
-    },
-    {
-        "key": "p2",
-        "name": "Acid Kaki",
-        "price": 650000,
-        "img": "/images/products/Pants/p2.jpg",
-        "bestseller": false,
-        "slug": "Acid_Kaki-p2"
-    },
-    {
-        "key": "p5",
-        "name": "Chill Sweat",
-        "price": 420000,
-        "img": "/images/products/Pants/p5.jpg",
-        "bestseller": true,
-        "slug": "Chill_Sweat-p5"
-    }
+  {
+    "key": "h2",
+    "name": "Patchowork Mint",
+    "price": 750000,
+    "img": "/images/products/Hoodies/h2.jpg",
+    "bestseller": false,
+    "slug": "Patchowork_Mint-h2"
+  },
+  {
+    "key": "h4",
+    "name": "Dark Grey",
+    "price": 600000,
+    "img": "/images/products/Hoodies/h4.jpg",
+    "bestseller": false,
+    "slug": "Dark_Grey-h4"
+  },
+  {
+    "key": "mb2",
+    "name": "Lolipop",
+    "price": 390000,
+    "img": "/images/products/Mini_Bags/mb2.jpg",
+    "bestseller": true,
+    "slug": "Lolipop-mb2"
+  },
+  {
+    "key": "p2",
+    "name": "Acid Kaki",
+    "price": 650000,
+    "img": "/images/products/Pants/p2.jpg",
+    "bestseller": false,
+    "slug": "Acid_Kaki-p2"
+  },
+  {
+    "key": "p5",
+    "name": "Chill Sweat",
+    "price": 420000,
+    "img": "/images/products/Pants/p5.jpg",
+    "bestseller": true,
+    "slug": "Chill_Sweat-p5"
+  }
 ]

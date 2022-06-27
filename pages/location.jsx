@@ -33,8 +33,8 @@ export function getStaticProps() {
   return {
     props: {
       branchData,
-    }
-  }
+    },
+  };
 }
 
 export default function Location({ branchData }) {

@@ -7,7 +7,7 @@ import HamburgerIcon from "./HamburgerIcon";
 
 export default function Header() {
   const { toggleSideBar } = useAppStore((state) => ({
-    toggleSideBar: state.toggleSideBar
+    toggleSideBar: state.toggleSideBar,
   }));
 
   return (

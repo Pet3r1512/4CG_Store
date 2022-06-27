@@ -11,7 +11,7 @@ export default function NavBar({ children }) {
 
     function stickyNav() {
       if (window.scrollY > sticky) {
-        setClassList(`${defaultClassList} fixed`)
+        setClassList(`${defaultClassList} fixed`);
       } else {
         setClassList(defaultClassList);
       }
@@ -26,5 +26,5 @@ export default function NavBar({ children }) {
     <div className={classList} ref={navBarEl}>
       {children}
     </div>
-  )
+  );
 }

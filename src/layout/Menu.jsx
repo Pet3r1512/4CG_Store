@@ -1,5 +1,5 @@
 import Link from "next/link";
-import MenuItem from './MenuItem';
+import MenuItem from "./MenuItem";
 
 export default function Menu() {
   const MenuList = MenuItem.map((item) => {

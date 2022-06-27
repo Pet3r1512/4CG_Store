@@ -4,26 +4,20 @@ import Template from "../src/layout/Template";
 import useFetch from "../src/client/swr";
 
 export default function Products() {
-  const { data, isLoading, error } = useFetch('/api/products');
+  const { data, isLoading, error } = useFetch("/api/products");
 
-  const createProductList = useCallback(
-    (products) => {
-      const types = Array.from(new Set([...products.map((product) => product.type)]));
-      return types.map((type) => {
-        const productList = products.filter((product) => product.type === type);
-        return <Category key={type} category={type} products={productList} />;
-      });
-    },
-    []
-  );
-
+  const createProductList = useCallback((products) => {
+    const types = Array.from(
+      new Set([...products.map((product) => product.type)])
+    );
+    return types.map((type) => {
+      const productList = products.filter((product) => product.type === type);
+      return <Category key={type} category={type} products={productList} />;
+    });
+  }, []);
 
   if (error) {
-    return (
-      <h1>
-        Error loading products
-      </h1>
-    );
+    return <h1>Error loading products</h1>;
   }
 
   return (
