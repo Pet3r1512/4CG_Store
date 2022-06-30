@@ -16,13 +16,10 @@ export default function Products() {
     });
   }, []);
 
-  if (error) {
-    return <h1>Error loading products</h1>;
-  }
-
   return (
     <Template>
       <div className="relative max-w-7xl mx-auto my-14 px-3 sm:px-4 lg:px-0 flex flex-col gap-y-14">
+        {error && <>Error loading products</>}
         {isLoading && <>Loading...</>}
         {data && createProductList(data.products)}
       </div>

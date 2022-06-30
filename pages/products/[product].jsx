@@ -18,12 +18,9 @@ export default function Product() {
   );
   const addToCart = useAppStore((state) => state.addToCart);
 
-  if (error) {
-    return <h1>Error loading product.</h1>;
-  }
-
   return (
     <Template>
+      {error && <>Error loading product.</>}
       {isLoading && <>Loading...</>}
       {data && (
         <ProductSection

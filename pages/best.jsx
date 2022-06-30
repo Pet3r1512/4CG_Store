@@ -4,13 +4,6 @@ import useFetch from "../src/client/swr";
 
 export default function Best() {
   const { data, isLoading, error } = useFetch("/api/best");
-  if (error) {
-    return (
-      <>
-        <h1>Error loading best sellers</h1>
-      </>
-    );
-  }
 
   return (
     <Template>
@@ -18,6 +11,7 @@ export default function Best() {
         <div>
           <h1 className="text-3xl font-extrabold">Best Sellers</h1>
           <div className="grid grid-cols-1 sm:grid-cols-2 sm:gap-3 lg:grid-cols-3 lg:gap-5">
+            {error && <>Error loading best sellers</>}
             {isLoading && <>Loading...</>}
             {data &&
               data.products.map((item) => {
