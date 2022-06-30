@@ -1,9 +1,5 @@
-import Header from "../src/layout/Header";
-import SideBar from "../src/layout/SideBar";
-import SubSearchBar from "../src/layout/SubSearchBar";
-import Footer from "../src/layout/Footer";
 import Card from "../src/products/Card";
-import NavBar from "../src/layout/NavBar";
+import Template from "../src/layout/Template";
 import useFetch from "../src/client/swr";
 
 export default function Best() {
@@ -17,12 +13,7 @@ export default function Best() {
   }
 
   return (
-    <>
-      <SideBar />
-      <NavBar>
-        <Header />
-        <SubSearchBar />
-      </NavBar>
+    <Template>
       <div className="relative max-w-7xl mx-auto my-14 px-3 sm:px-4 lg:px-0 flex flex-col gap-y-14">
         <div>
           <h1 className="text-3xl font-extrabold">Best Sellers</h1>
@@ -43,7 +34,6 @@ export default function Best() {
           </div>
         </div>
       </div>
-      <Footer />
-    </>
+    </Template>
   );
 }
