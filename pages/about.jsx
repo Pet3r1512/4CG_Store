@@ -1,19 +1,5 @@
 import { Facebook, Instagram, Twitter } from "@mui/icons-material";
-import Header from "../src/layout/Header";
-import SideBar from "../src/layout/SideBar";
-import SubSearchBar from "../src/layout/SubSearchBar";
-import Footer from "../src/layout/Footer";
 import Template from "../src/layout/Template";
-
-function SocialLogos() {
-  return (
-    <div className="flex gap-x-3">
-      <Facebook />
-      <Instagram />
-      <Twitter />
-    </div>
-  );
-}
 
 export default function About() {
   const about_content1 = `Là một thương hiệu thời trang được thành lập từ nằm 2022, sau 2 ngày hình thành và phát triển, 4CG đã chiếm được tình cảm của các bạn trẻ theo đuổi phong cách đường phố, không phân biệt giới tính. Chúng mình ở đây với mong muốn mang đến cho bạn những sản phầm chất lượng giúp bạn trở nên tự tin và cá tính hơn bao giờ hết. Hãy yêu bản thân theo cách của bạn, hãy tự tin mặc đẹp!`;
@@ -39,7 +25,11 @@ export default function About() {
               <q>FASHION HAS NO LIMIT</q>
             </div>
             <div className="flex justify-evenly w-2/4 md:w-1/4 md:hidden">
-              <SocialLogos />
+              <div className="flex gap-x-3">
+                <Facebook />
+                <Instagram />
+                <Twitter />
+              </div>
             </div>
           </div>
         </div>
