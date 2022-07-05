@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { ChangeEventHandler, useState } from "react";
 import ProductsList from "../products/ProductsList";
 
 export default function SearchBar() {
   const [input, setInput] = useState("");
 
-  const onChangeHandler = (context) => {
+  const onChangeHandler: ChangeEventHandler<HTMLInputElement> = (context) => {
     const lowerCase = context.target.value.toLowerCase();
     setInput(lowerCase);
   };

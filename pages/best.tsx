@@ -1,9 +1,10 @@
+import { convertPrice } from "../src/products/formatPrice";
 import Card from "../src/products/Card";
 import Template from "../src/layout/Template";
-import useFetch from "../src/products/fetchProductDetails";
+import useFetch, { ProductsResult } from "../src/products/fetchProductDetails";
 
 export default function Best() {
-  const { data, isLoading, error } = useFetch("/api/best");
+  const { data, isLoading, error } = useFetch<ProductsResult>("/api/best");
 
   return (
     <Template>
@@ -19,7 +20,7 @@ export default function Best() {
                   <Card
                     key={item.key}
                     name={item.name}
-                    price={item.price}
+                    price={convertPrice(item.price)}
                     img={item.img}
                     slug={item.slug}
                   />

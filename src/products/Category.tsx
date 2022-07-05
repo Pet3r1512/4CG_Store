@@ -1,7 +1,13 @@
 import Card from "./Card";
 import { convertPrice } from "./formatPrice";
+import { Product } from "./fetchProductDetails";
 
-export default function Category({ products, category }) {
+interface CategoryProps {
+  products: Product[];
+  category: string;
+}
+
+export default function Category({ products, category }: CategoryProps) {
   return (
     <div>
       <h1 className="text-3xl font-extrabold">{`${category

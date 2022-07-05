@@ -1,8 +1,20 @@
 import create from "zustand";
 import { devtools } from "zustand/middleware";
 import { immer } from "zustand/middleware/immer";
+import { ProductWithQuantity } from "./products/fetchProductDetails";
 
-export const useAppStore = create(
+interface SideBarSlice {
+  showSideBar: boolean;
+  toggleSideBar: (value: boolean) => void;
+}
+
+interface CartSlice {
+  cart: ProductWithQuantity[];
+  addToCart: (product: any) => void;
+  resetCart: () => void;
+}
+
+export const useAppStore = create<SideBarSlice & CartSlice>()(
   devtools(
     immer((set) => ({
       // SideBar Slice

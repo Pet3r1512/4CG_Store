@@ -1,11 +1,15 @@
-const { PrismaClient } = require("@prisma/client");
-const hoodies = require("./json/hoodies.json");
-const minibags = require("./json/minibags.json");
-const pants = require("./json/pants.json");
-const tshirts = require("./json/tshirts.json");
-const wallets = require("./json/wallets.json");
+import { PrismaClient } from "@prisma/client";
+import hoodies from "./json/hoodies.json";
+import pants from "./json/pants.json";
+import wallets from "./json/wallets.json";
+import minibags from "./json/minibags.json";
+import tshirts from "./json/tshirts.json";
+import { Product } from "../src/products/fetchProductDetails";
 
-function createProductDetails(product, productType) {
+function createProductDetails(
+  product: Omit<Product, "id" | "type">,
+  productType: string
+): Omit<Product, "id"> {
   return {
     type: productType,
     key: product.key,
@@ -17,9 +21,9 @@ function createProductDetails(product, productType) {
   };
 }
 
-async function insert() {
-  const prisma = new PrismaClient();
+const prisma = new PrismaClient();
 
+async function insert() {
   const promises = [
     hoodies.map((hoodie) => createProductDetails(hoodie, "hoodie")),
     minibags.map((minibag) => createProductDetails(minibag, "minibag")),

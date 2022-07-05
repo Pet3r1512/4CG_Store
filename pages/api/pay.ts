@@ -1,12 +1,24 @@
+import { NextApiRequest, NextApiResponse } from "next";
 import { prisma } from "../../src/client/getPrismaClient";
+import { ProductWithQuantity } from "../../src/products/fetchProductDetails";
 
-export default async function handler(req, res) {
+interface Order {
+  customerName: string;
+  customerPhoneNumber: string;
+  cart: ProductWithQuantity[];
+  total: number;
+}
+
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   if (req.method !== "POST") {
     res.status(500).json({ message: "Unsupported method" });
     return;
   }
 
-  const { customerName, customerPhoneNumber, cart, total } = req.body;
+  const { customerName, customerPhoneNumber, cart, total } = req.body as Order;
 
   const noCustomerDetails = !customerName || !customerPhoneNumber;
   const emptyCart = !cart || cart.length <= 0;

@@ -12,7 +12,12 @@ export default function Menu() {
   );
 }
 
-function MenuLink({ href, title }) {
+interface MenuLinkProps {
+  href: string;
+  title: string;
+}
+
+function MenuLink({ href, title }: MenuLinkProps) {
   return (
     <li>
       <Link href={href}>

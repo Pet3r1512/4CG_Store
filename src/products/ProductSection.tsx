@@ -2,7 +2,19 @@ import Image from "next/image";
 import { convertPrice } from "./formatPrice";
 import Button from "../layout/Button";
 
-export default function ProductSection({ img, name, price, onClick }) {
+interface ProductSectionProps {
+  img: string;
+  name: string;
+  price: number;
+  onClick: () => void;
+}
+
+export default function ProductSection({
+  img,
+  name,
+  price,
+  onClick,
+}: ProductSectionProps) {
   return (
     <div className="max-w-7xl mx-auto px-12 flex min-h-screen justify-center items-center">
       <div className="my-20 w-full flex flex-col sm:flex-row sm:justify-center items-center">

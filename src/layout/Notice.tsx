@@ -1,5 +1,3 @@
-import { useState, useEffect } from "react";
-
 function CheckIcon() {
   return (
     <svg
@@ -19,7 +17,12 @@ function CheckIcon() {
   );
 }
 
-export default function Notice({ content, status }) {
+interface NoticeProps {
+  content: string;
+  status: string;
+}
+
+export default function Notice({ content, status }: NoticeProps) {
   const baseCss =
     "z-10 text-white max-w-[400px] max-h-[150px] text-md font-semibold absolute bottom-5 left-5 px-4 py-3 flex gap-x-2 rounded-lg";
 

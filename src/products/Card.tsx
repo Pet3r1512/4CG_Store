@@ -1,7 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Card({ img, name, price, slug }) {
+interface CardProps {
+  img: string;
+  name: string;
+  price: string;
+  slug: string;
+}
+
+export default function Card({ img, name, price, slug }: CardProps) {
   return (
     <div className="mx-auto mt-4 card px-6 pb-4 flex flex-col gap-2 items-center">
       <div className="min-h-[550px] flex items-center">

@@ -1,12 +1,19 @@
-import { useEffect, useRef, useState } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 
-export default function NavBar({ children }) {
-  const navBarEl = useRef(null);
+interface NavBarProps {
+  children: ReactNode;
+}
+
+export default function NavBar({ children }: NavBarProps) {
+  const navBarEl = useRef<HTMLDivElement>(null);
   const defaultClassList = "w-full z-10 top-0 bg-gray-600 pb-5";
   const [classList, setClassList] = useState(defaultClassList);
 
   useEffect(() => {
     const navbar = navBarEl.current;
+    if (!navbar) {
+      return;
+    }
     const sticky = navbar.offsetTop;
 
     function stickyNav() {

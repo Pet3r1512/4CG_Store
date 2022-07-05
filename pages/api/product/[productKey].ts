@@ -1,6 +1,10 @@
+import { NextApiRequest, NextApiResponse } from "next";
 import { prisma } from "../../../src/client/getPrismaClient";
 
-export default async function handler(req, res) {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   if (req.method !== "GET") {
     res.status(500).json({ message: "Unsupported method" });
   }
@@ -13,7 +17,7 @@ export default async function handler(req, res) {
 
   try {
     const product = await prisma.product.findUnique({
-      where: { key: productKey },
+      where: { key: productKey as string },
     });
     res.status(200).json({ product });
   } catch (error) {

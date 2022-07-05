@@ -1,12 +1,15 @@
 import { useCallback } from "react";
 import Category from "../src/products/Category";
 import Template from "../src/layout/Template";
-import useFetch from "../src/products/fetchProductDetails";
+import useFetch, {
+  ProductsResult,
+  Product,
+} from "../src/products/fetchProductDetails";
 
 export default function Products() {
-  const { data, isLoading, error } = useFetch("/api/products");
+  const { data, isLoading, error } = useFetch<ProductsResult>("/api/products");
 
-  const createProductList = useCallback((products) => {
+  const createProductList = useCallback((products: Product[]) => {
     const types = Array.from(
       new Set([...products.map((product) => product.type)])
     );

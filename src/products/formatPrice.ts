@@ -1,4 +1,4 @@
-export function convertPrice(val) {
+export function convertPrice(val: number): string {
   if (val === null || val === undefined) return "0";
 
   if (val === 0) return "0";

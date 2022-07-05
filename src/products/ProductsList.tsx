@@ -1,9 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
-import useFetch from "./fetchProductDetails";
+import useFetch, { ProductsResult } from "./fetchProductDetails";
 
-export default function ProductsList({ input }) {
-  const { data, isLoading } = useFetch(input ? `/api/search/${input}` : null);
+interface ProductsListProp {
+  input: string;
+}
+
+export default function ProductsList({ input }: ProductsListProp) {
+  const { data, isLoading } = useFetch<ProductsResult>(
+    input ? `/api/search/${input}` : null
+  );
 
   return (
     <ul

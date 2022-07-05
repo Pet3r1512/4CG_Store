@@ -1,30 +1,29 @@
 import Branch from "../src/storeInfo/Branch";
 import Template from "../src/layout/Template";
 
+interface BranchInfo {
+  branch: string;
+  address: string;
+  address2?: string;
+}
+
 export function getStaticProps() {
-  const branchData = [
+  const branchData: BranchInfo[] = [
     {
-      key: 1,
       branch: "4CG Ho Chi Minh",
       address: "So 19, duong Nguyen Huu Tho, P.Tan Phong, Q.7, TP.HCM",
       address2: "So 98, duong Ngo Tat To, P.19, Q.Binh Thanh",
     },
-
     {
-      key: 2,
       branch: "4CG Nha Trang",
       address:
         "So 22, duong Nguyen Dinh Chieu, P.Vinh Phuoc, TP.Nha Trang, Khanh Hoa",
     },
-
     {
-      key: 3,
       branch: "4CG Lam Dong",
       address: "Duong Nguyen Tuan, P.Loc Tien, TP.Bao Loc, Lam Dong",
     },
-
     {
-      key: 4,
       branch: "4CG Ca Mau",
       address: "Duong Mau Than, Khom 6, P.9, TP.Ca Mau, Tinh Ca Mau",
     },
@@ -37,11 +36,15 @@ export function getStaticProps() {
   };
 }
 
-export default function Location({ branchData }) {
+interface LocationProps {
+  branchData: BranchInfo[];
+}
+
+export default function Location({ branchData }: LocationProps) {
   const branchMap = branchData.map((branch) => {
     return (
       <Branch
-        key={branch.key}
+        key={branch.branch}
         branch={branch.branch}
         address={branch.address}
         address2={branch.address2}

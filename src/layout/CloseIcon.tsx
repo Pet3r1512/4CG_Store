@@ -1,4 +1,8 @@
-export default function CloseIcon({ onClick }) {
+interface CloseIconProps {
+  onClick: () => void;
+}
+
+export default function CloseIcon({ onClick }: CloseIconProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

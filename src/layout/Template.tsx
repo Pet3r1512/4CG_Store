@@ -1,10 +1,15 @@
+import { ReactNode } from "react";
 import SideBar from "./SideBar";
 import NavBar from "./NavBar";
 import Header from "./Header";
 import SubSearchBar from "./SubSearchBar";
 import Footer from "./Footer";
 
-export default function Template({ children }) {
+interface TemplateProps {
+  children: ReactNode;
+}
+
+export default function Template({ children }: TemplateProps) {
   return (
     <>
       <SideBar />
