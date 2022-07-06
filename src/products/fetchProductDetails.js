@@ -1,7 +1,7 @@
 import useSWR from "swr";
 
-const fetcher = (...args) =>
-  fetch(...args)
+const fetcher = (key) =>
+  fetch(key)
     .then((res) => {
       if (!res.ok) {
         throw new Error("Something went wrong.");
@@ -13,8 +13,8 @@ const fetcher = (...args) =>
       throw new Error(error);
     });
 
-export default function useFetch(...args) {
-  const { data, error } = useSWR(...args, fetcher);
+export default function useFetch(key) {
+  const { data, error } = useSWR(key, fetcher);
 
   return {
     data,

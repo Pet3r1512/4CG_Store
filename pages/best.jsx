@@ -1,6 +1,6 @@
 import Card from "../src/products/Card";
 import Template from "../src/layout/Template";
-import useFetch from "../src/client/swr";
+import useFetch from "../src/products/fetchProductDetails";
 
 export default function Best() {
   const { data, isLoading, error } = useFetch("/api/best");

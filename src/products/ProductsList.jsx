@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import useFetch from "../client/swr";
+import useFetch from "./fetchProductDetails";
 
 export default function ProductsList({ input }) {
   const { data, isLoading } = useFetch(input ? `/api/search/${input}` : null);

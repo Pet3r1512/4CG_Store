@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import Template from "../../src/layout/Template";
 import ProductSection from "../../src/products/ProductSection";
 import { useAppStore } from "../../src/store";
-import useFetch from "../../src/client/swr";
+import useFetch from "../../src/products/fetchProductDetails";
 
 function getKeyFromSlug(slug) {
   const slugSplit = slug.split("-");
